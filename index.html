@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#10182c" />
-  <title>AutoBiz 6.5 | 자연스러운 콘텐츠 · 개인용 대시보드</title>
+  <title>AutoBiz 6.6 | 자연스러운 콘텐츠 · 개인용 대시보드</title>
   <style>
     :root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#15223b;background:#f5f7fb;font-size:15px}
     *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
@@ -17,13 +17,43 @@
     .draft-card{margin:15px 0 19px}.draft-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.btn.small{font-size:12px;padding:6px 10px}.draft-card .result{min-height:80px;padding:14px;font-size:13px}.draft-edit{display:block;width:100%;min-height:155px;line-height:1.8;resize:vertical;background:#f6f8fd;border:1px solid #e3e9f5;border-radius:14px;color:#15223b}.draft-edit:focus{background:#fff}.draft-card .draft-head b{font-size:14px}
     .library-list{display:grid;gap:10px}.library-item{background:#f8faff;border:1px solid #e4eaf6;border-radius:12px;padding:15px;display:flex;justify-content:space-between;gap:15px;align-items:center}.library-item strong{display:block;overflow-wrap:anywhere}.library-item .muted{margin-top:5px;overflow-wrap:anywhere}.library-item .actions{margin-top:0;justify-content:flex-end}.library-item .actions .btn{white-space:nowrap}.small-note{font-size:12px;color:#64748b}.counter{font-variant-numeric:tabular-nums}.btn:focus-visible,.tab:focus-visible{outline:3px solid #6a95fa;outline-offset:2px}.field-inline{display:flex;gap:8px}.field-inline input{flex:1}.field-inline button{white-space:nowrap}@media(max-width:550px){.library-item{align-items:stretch;flex-direction:column}.library-item .actions{justify-content:flex-start}}
     @media(max-width:730px){.shell{padding:16px 12px 54px}.hero{padding:22px}.hero .symbol{display:none}.hero h1{font-size:21px}.top .pill{display:none}.cols,.two,.three{grid-template-columns:1fr}.card{padding:17px}.stat .val{font-size:23px}.tab{font-size:13px;padding:11px 12px}}
+    /* 6.6: narrow screen usability and status visibility */
+    .backup-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;padding:12px 16px;background:#eef4ff;border:1px solid #cfdffb;border-radius:14px}
+    .backup-strip.warning{background:#fff8e7;border-color:#ecd8a2}
+    .backup-strip .backup-text{flex:1;min-width:0;font-size:13px;line-height:1.55}
+    .backup-strip .backup-text strong{display:block;margin-bottom:2px}
+    .backup-strip .btn{flex:none}
+    #workStatus{font-size:12px;color:#446b93;min-height:19px;margin-top:6px}
+    .mobile-tips{padding:10px 13px;background:#edf4ff;border-radius:12px;color:#315a96;font-size:13px;line-height:1.5}
+    .backup-mini{font-size:12px;color:#687991;margin-top:7px}
+    @media(max-width:730px){
+      .shell{padding:12px 11px 48px}
+      .top{margin-bottom:16px}
+      .hero{border-radius:17px;padding:19px}
+      .notice{margin:12px 0}
+      nav{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;margin:15px -11px;padding:4px 11px 11px;gap:7px}
+      nav .tab{flex:none;white-space:nowrap;scroll-snap-align:start;min-height:44px}
+      .backup-strip{align-items:stretch;flex-direction:column;padding:12px}
+      .backup-strip .btn{width:100%;min-height:44px}
+      .actions .btn{min-height:44px}
+      input,textarea,select{font-size:16px}
+      .section-title{align-items:flex-start;flex-wrap:wrap}
+      .section-title h2{line-height:1.35}
+      .draft-card .draft-head .btn{min-height:38px}
+      .tblwrap{margin:0 -8px;padding:0 8px}
+    }
+    @media(max-width:400px){.brand{font-size:18px}.mark{width:39px;height:39px}.hero h1{font-size:19px}.card{padding:15px}.field-inline{flex-wrap:wrap}}
   </style>
 </head>
 <body>
 <div class="shell">
-  <header class="top"><div class="logo"><div class="mark">A</div><div><div class="brand">AutoBiz <span style="color:#3a6de4">6.5</span></div><div class="sub">상품 · 콘텐츠 · 매출을 한곳에서</div></div></div><span class="pill">데이터: 브라우저에 저장</span></header>
+  <header class="top"><div class="logo"><div class="mark">A</div><div><div class="brand">AutoBiz <span style="color:#3a6de4">6.6</span></div><div class="sub">상품 · 콘텐츠 · 매출을 한곳에서</div></div></div><span class="pill">데이터: 브라우저에 저장</span></header>
   <section class="hero"><div><h1>반복 업무를 더 간단하게.</h1><p>상품 정보를 저장하고 필요한 글을 만들고 보관하세요. 판매 기록도 한 화면에서 관리할 수 있습니다. AI는 문체 선택을 돕고, 게시글은 입력한 정보로만 구성합니다.</p></div><div class="symbol" aria-hidden="true">▤</div></section>
   <div class="notice"><b>개인 테스트용 안내</b> — 상품·콘텐츠·판매 데이터는 이 브라우저에만 저장되며 다른 기기와 자동 동기화되지 않습니다. <b>AI 문체 추천은 WebGPU 지원 기기에서만 가능</b>하며 최초 모델 다운로드에 많은 데이터와 메모리가 필요할 수 있습니다. 게시용 문구는 AI 원문을 그대로 사용하지 않고 입력 정보와 정해진 문장으로 구성합니다. 입력한 사실 자체는 직접 검토하세요. 로그인·결제 기능은 없고, 실제 고객 정보는 입력하지 마세요.</div>
+  <section class="backup-strip" id="backupStrip" aria-live="polite">
+    <div class="backup-text"><strong id="backupHeadline">자동 저장 · 백업 확인</strong><span id="backupSummary">브라우저에 저장하는 중입니다.</span></div>
+    <button type="button" class="btn alt" id="quickBackup">📥 전체 백업 받기</button>
+  </section>
   <nav aria-label="기능 선택">
     <button class="tab active" data-tab="dashboard">📊 대시보드</button><button class="tab" data-tab="sales">🧾 매출 관리</button><button class="tab" data-tab="content">🤖 콘텐츠 제작</button><button class="tab" data-tab="library">📦 상품·글 보관함</button><button class="tab" data-tab="analysis">📈 상품 분석</button><button class="tab" data-tab="backup">💾 백업/복원</button>
   </nav>
@@ -50,6 +80,9 @@
         <div class="field"><label for="cPrice">표시할 가격 (원)</label><input id="cPrice" type="number" min="0" step="1" value="15000" /></div>
         <div class="field"><label for="cTone">문체</label><select id="cTone"><option value="friendly">친근하게</option><option value="informative">정보 중심으로</option><option value="short">간결하게</option></select></div>
         <div class="actions"><button type="button" class="btn alt" id="saveProduct">💾 이 상품 저장</button><button type="button" class="btn ghost" id="newProduct">새 상품 입력</button></div>
+        <div class="mobile-tips">✍️ 입력 중인 작업은 이 브라우저에 임시 저장됩니다. 다시 접속하면 이어서 편집할 수 있어요.</div>
+        <div id="workStatus" role="status">입력 변경을 기다리는 중</div>
+        <div class="actions"><button type="button" class="btn ghost small" id="clearWorkspace">작업 중인 입력 초기화</button></div>
         <div class="status" id="productStatus" role="status"></div>
         <div class="actions"><button type="button" class="btn" id="generateContent">초안 3개 만들기</button><button type="button" class="btn alt" id="regenerateContent">다른 표현으로 다시 만들기</button></div>
         <p class="hint">같은 정보라도 문체와 표현을 바꿔 볼 수 있어요. 새로운 상품 사실을 만들어 넣지는 않습니다.</p>
@@ -86,8 +119,8 @@
     <div class="info">보관함의 자료는 <b>브라우저 저장 공간(localStorage)</b>에만 저장됩니다. 브라우저 데이터 삭제 시 없어질 수 있으니 <b>백업/복원 → 전체 JSON 백업</b>을 이용하세요.</div>
   </section>
   <section id="analysis" class="panel"><div class="section-title"><h2>상품별 분석</h2><span class="muted">정확한 계산 기반</span></div><div class="three"><div class="stat"><div class="name">상품 종류</div><div class="val" id="productCount">0종</div></div><div class="stat"><div class="name">매출 1위 상품</div><div class="val" id="bestProduct" style="font-size:18px">없음</div></div><div class="stat"><div class="name">판매 기록</div><div class="val" id="salesCount">0건</div></div></div><div class="card section-bottom"><h3>상품별 매출과 이익</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th class="num">이익률</th></tr></thead><tbody id="productRows"></tbody></table></div></div><div class="info">이 분석은 파이썬이나 AI 추측이 아니라 브라우저에서 정확한 산술 계산으로 만듭니다. 실제 경영 의사결정에 사용하기 전에 별도 검증이 필요합니다.</div></section>
-  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><p class="muted">상품·콘텐츠·판매 기록을 하나의 JSON 파일로 백업하거나 판매 기록만 CSV로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">전체 JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">6.5 전체 JSON 백업을 복원하면 이 브라우저의 상품·콘텐츠·판매 기록이 모두 교체됩니다. 이전 6.4 이하 JSON 백업(판매 기록만 포함)은 판매 기록만 교체하며 보관함은 유지합니다. 먼저 새 백업을 받아 두세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 백업 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
-  <footer class="footer">AutoBiz 6.5 · 개인 학습용 시제품 · 상품·콘텐츠·매출 정보는 이 브라우저에만 저장됩니다.</footer>
+  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><div class="info" id="backupAdvice">입력 데이터는 브라우저에 자동 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지울 때를 대비해 JSON 파일을 별도로 내려받으세요.</div><p class="muted">상품·콘텐츠·판매 기록을 하나의 JSON 파일로 백업하거나 판매 기록만 CSV로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">전체 JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">6.5~6.6 전체 JSON 백업을 복원하면 이 브라우저의 상품·콘텐츠·판매 기록이 모두 교체됩니다. 이전 6.4 이하 JSON 백업(판매 기록만 포함)은 판매 기록만 교체하며 보관함은 유지합니다. 먼저 새 백업을 받아 두세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 백업 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
+  <footer class="footer">AutoBiz 6.6 · 개인 학습용 시제품 · 상품·콘텐츠·매출 정보는 이 브라우저에만 저장됩니다.</footer>
 </div>
 <script>
 (() => {
@@ -105,9 +138,9 @@ function normalize(row){
  const name=String(row.name||'').trim().slice(0,90);
  const qty=Number(row.qty), revenue=Number(row.revenue), profit=Number(row.profit);
  if(!name||![qty,revenue,profit].every(Number.isFinite)||qty<=0||!Number.isInteger(qty)||revenue<0||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('판매 기록 형식이 잘못되었습니다.');
- return {id: String(row.id||crypto.randomUUID()),name,qty,revenue,profit,created:String(row.created||new Date().toISOString()),fingerprint:String(row.fingerprint||'')};
+ return {id: String(row.id||(crypto.randomUUID?.()??('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)))),name,qty,revenue,profit,created:String(row.created||new Date().toISOString()),fingerprint:String(row.fingerprint||'')};
 }
-function store(){try{localStorage.setItem(KEY,JSON.stringify(sales));return true;}catch(e){alert('브라우저 저장 실패: 저장 공간 또는 설정을 확인하세요. JSON 백업을 권장합니다.');return false;}}
+function store(next=sales){try{localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new Event('autobiz66:data-changed'));return true;}catch(e){alert('브라우저 저장 실패: 저장 공간 또는 설정을 확인하세요. JSON 백업을 권장합니다.');return false;}}
 function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'[]');sales=Array.isArray(raw)?raw.map(normalize):[];}catch(e){sales=[];alert('저장된 데이터를 읽지 못했습니다. 이전 JSON 백업으로 복원하세요.');}}
 function setStatus(id,msg,error=false){$(id).textContent=msg;$(id).classList.toggle('err',error);}
 function group(){const map=new Map();for(const s of sales){const p=map.get(s.name)||{name:s.name,qty:0,revenue:0,profit:0};p.qty+=s.qty;p.revenue+=s.revenue;p.profit+=s.profit;map.set(s.name,p);}return Array.from(map.values()).sort((a,b)=>b.revenue-a.revenue);}
@@ -127,13 +160,13 @@ function backup(){
   const products=JSON.parse(localStorage.getItem('autobiz65_products_v1')||'[]');
   const drafts=JSON.parse(localStorage.getItem('autobiz65_drafts_v1')||'[]');
   if(!Array.isArray(products)||!Array.isArray(drafts))throw Error('보관함 형식 오류');
-  download('AutoBiz65_full_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({version:2,app:'AutoBiz',exportedAt:new Date().toISOString(),records:sales,products,drafts},null,2),'application/json;charset=utf-8');
-  setStatus('backupStatus','✅ 판매 '+sales.length+'건 · 상품 '+products.length+'개 · 콘텐츠 '+drafts.length+'개를 백업했습니다.');
+  download('AutoBiz66_full_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({version:2,app:'AutoBiz',exportedAt:new Date().toISOString(),records:sales,products,drafts},null,2),'application/json;charset=utf-8');
+  window.dispatchEvent(new Event('autobiz66:backup-requested'));setStatus('backupStatus','✅ JSON 백업 파일을 생성했습니다. 다운로드 폴더에 실제로 저장됐는지 확인하세요. · 판매 '+sales.length+'건 · 상품 '+products.length+'개 · 콘텐츠 '+drafts.length+'개');
  }catch(err){setStatus('backupStatus','백업 실패: '+err.message,true);}
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));if(b.dataset.tab==='dashboard')drawChart();}));
-$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();if(lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다.');const prev=sales[sales.length-1];if(prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');sales.push(normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint}));store();lastSubmission=fingerprint;lastSubmissionAt=now;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
-$('salesRows').addEventListener('click',e=>{const btn=e.target.closest('button[data-id]');if(!btn)return;const s=sales.find(x=>x.id===btn.dataset.id);if(!s)return;if(!confirm(`'${s.name}' 기록을 삭제할까요?\n삭제 전 JSON 백업 다운로드를 권장합니다.`))return;sales=sales.filter(x=>x.id!==btn.dataset.id);store();render();setStatus('saleStatus','선택한 기록을 삭제했습니다.');});
+$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();if(lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다.');const prev=sales[sales.length-1];if(prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');const next=[...sales,normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint})];if(!store(next))return;sales=next;lastSubmission=fingerprint;lastSubmissionAt=now;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
+$('salesRows').addEventListener('click',e=>{const btn=e.target.closest('button[data-id]');if(!btn)return;const s=sales.find(x=>x.id===btn.dataset.id);if(!s)return;if(!confirm(`'${s.name}' 기록을 삭제할까요?\n삭제 전 JSON 백업 다운로드를 권장합니다.`))return;const next=sales.filter(x=>x.id!==btn.dataset.id);if(!store(next))return;sales=next;render();setStatus('saleStatus','선택한 기록을 삭제했습니다.');});
 $('exportJson').addEventListener('click',backup);
 $('exportCsv').addEventListener('click',()=>{const esc=s=>'"'+String(s).replaceAll('"','""')+'"';const lines=[['상품명','수량','매출','예상 이익'].map(esc).join(',')].concat(sales.map(s=>[s.name,s.qty,s.revenue,s.profit].map(esc).join(',')));download('AutoBiz6_sales.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');});
 $('restoreJson').addEventListener('click',async()=>{
@@ -163,12 +196,12 @@ $('restoreJson').addEventListener('click',async()=>{
     for(const k of keys){try{if(old[k]===null)localStorage.removeItem(k);else localStorage.setItem(k,old[k]);}catch(_) {}}
     throw Error('저장 공간이 부족하거나 브라우저 저장이 차단되었습니다. 기존 데이터를 유지하려고 복원했습니다.');
   }
-  sales=nextSales;render();window.dispatchEvent(new Event('autobiz65:restored'));
+  sales=nextSales;render();window.dispatchEvent(new Event('autobiz65:restored'));window.dispatchEvent(new Event('autobiz66:data-changed'));
   setStatus('backupStatus',parsed.version===2?`✅ 전체 복원 완료: 판매 ${sales.length}건 · 상품 ${products.length}개 · 콘텐츠 ${drafts.length}개`:`✅ 판매 기록 ${sales.length}건 복원 · 기존 보관함 유지`);
  }catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}
 });
 function splitCSV(line){const out=[];let field='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(quoted&&line[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){out.push(field);field='';}else field+=c;}out.push(field);return out;}
-$('loadCsv').addEventListener('click',async()=>{try{const f=$('importCsv').files[0];if(!f)throw Error('CSV 파일을 선택하세요.');if(f.size>2_000_000)throw Error('파일 크기가 너무 큽니다.');const lines=(await f.text()).replace(/^\ufeff/,'').trim().split(/\r?\n/);if(lines.length<2)throw Error('데이터가 없는 CSV입니다.');const heads=splitCSV(lines[0]).map(x=>x.trim().replace(/^\ufeff/,''));const find=arr=>arr.map(x=>heads.indexOf(x)).find(x=>x!==-1);const idx=[find(['상품명','상품 이름']),find(['수량','판매 수량']),find(['매출']),find(['예상 이익','예상이익'])];if(idx.some(x=>x===undefined))throw Error('필수 열(상품명/수량/매출/예상 이익)을 찾지 못했습니다.');const next=lines.slice(1).filter(Boolean).map(line=>{const cells=splitCSV(line);return normalize({name:cells[idx[0]],qty:Number(cells[idx[1]]),revenue:Number(cells[idx[2]]),profit:Number(cells[idx[3]])});});if(next.length>10000)throw Error('기록이 너무 많습니다.');if(!confirm(`CSV 기록 ${next.length}건을 추가할까요? 기존 기록과 중복될 수 있습니다.`))return;sales=[...sales,...next];store();render();setStatus('backupStatus',`✅ CSV 기록 ${next.length}건을 추가했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
+$('loadCsv').addEventListener('click',async()=>{try{const f=$('importCsv').files[0];if(!f)throw Error('CSV 파일을 선택하세요.');if(f.size>2_000_000)throw Error('파일 크기가 너무 큽니다.');const lines=(await f.text()).replace(/^\ufeff/,'').trim().split(/\r?\n/);if(lines.length<2)throw Error('데이터가 없는 CSV입니다.');const heads=splitCSV(lines[0]).map(x=>x.trim().replace(/^\ufeff/,''));const find=arr=>arr.map(x=>heads.indexOf(x)).find(x=>x!==-1);const idx=[find(['상품명','상품 이름']),find(['수량','판매 수량']),find(['매출']),find(['예상 이익','예상이익'])];if(idx.some(x=>x===undefined))throw Error('필수 열(상품명/수량/매출/예상 이익)을 찾지 못했습니다.');const next=lines.slice(1).filter(Boolean).map(line=>{const cells=splitCSV(line);return normalize({name:cells[idx[0]],qty:Number(cells[idx[1]]),revenue:Number(cells[idx[2]]),profit:Number(cells[idx[3]])});});if(next.length>10000)throw Error('기록이 너무 많습니다.');if(!confirm(`CSV 기록 ${next.length}건을 추가할까요? 기존 기록과 중복될 수 있습니다.`))return;const combined=[...sales,...next];if(!store(combined))return;sales=combined;render();setStatus('backupStatus',`✅ CSV 기록 ${next.length}건을 추가했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
 load();render();window.addEventListener('resize',()=>{if($('dashboard').classList.contains('active'))drawChart();});
 })();
 </script>
@@ -305,7 +338,7 @@ byId('copyContent').addEventListener('click',()=>copyText(allContent()));
 byId('saveContent').addEventListener('click',()=>{
   if(!hasDraft){setStatus(contentStatus,'먼저 초안을 생성하세요.',true);return;}
   const url=URL.createObjectURL(new Blob([allContent()],{type:'text/plain;charset=utf-8'}));
-  const a=document.createElement('a');a.href=url;a.download='AutoBiz65_콘텐츠초안.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
+  const a=document.createElement('a');a.href=url;a.download='AutoBiz66_콘텐츠초안.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
 });
 async function checkSupport(){
   if (!window.isSecureContext || !navigator.gpu) return '이 브라우저에서는 WebGPU가 지원되지 않습니다. 템플릿은 정상 이용 가능합니다.';
@@ -395,7 +428,7 @@ let products=fromStore(PK,validateProduct),drafts=fromStore(DK,validateDraft), e
 if(!products)products=[];
 if(!drafts)drafts=[];
 function saveList(key,next){
- try{localStorage.setItem(key,JSON.stringify(next));return true;}
+ try{localStorage.setItem(key,JSON.stringify(next));window.dispatchEvent(new Event('autobiz66:data-changed'));return true;}
  catch(error){status('libraryStatus','⚠️ 브라우저 저장 공간이 부족하거나 저장이 차단됐습니다. 항목을 줄이거나 백업을 받아 보세요.',true);return false;}
 }
 function setTab(tab){
@@ -526,6 +559,84 @@ window.addEventListener('autobiz65:restored',()=>{
  editingProductId=null;render();status('libraryStatus','✅ 백업에서 복원한 데이터를 불러왔습니다.');
 });
 render();
+})();
+</script>
+<script>
+// AutoBiz 6.6: workflow autosave and backup reminder; never uploads data to a server.
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const WORK_KEY='autobiz66_workspace_v1';
+  const CHANGE_KEY='autobiz66_changed_at_v1';
+  const BACKUP_KEY='autobiz66_backup_requested_at_v1';
+  const formIds=['cName','cFeature','cTarget','cPrice','cTone','draftInstagram','draftBlog','draftShorts'];
+  const status=$('workStatus');
+  let saveTimer=null;
+  const format=t=>t?new Date(Number(t)).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+  function hasData(){
+    for(const k of ['autobiz6_sales_v1','autobiz65_products_v1','autobiz65_drafts_v1']){
+      try{const v=JSON.parse(localStorage.getItem(k)||'[]');if(Array.isArray(v)&&v.length)return true;}catch(e){return true;}
+    }
+    return false;
+  }
+  function updateBanner(){
+    const changed=Number(localStorage.getItem(CHANGE_KEY)||'0');
+    const backed=Number(localStorage.getItem(BACKUP_KEY)||'0');
+    const warning=hasData()&&(!backed||changed>backed);
+    $('backupStrip').classList.toggle('warning',warning);
+    $('backupHeadline').textContent=warning?'⚠️ 변경된 데이터가 있어요':'✅ 브라우저 자동 저장 사용 중';
+    const last=backed?`마지막 백업 요청: ${format(backed)} · `:'';
+    const advice=warning?'변경사항을 보호하려면 JSON 백업 파일을 내려받으세요.':'데이터는 이 브라우저에만 저장됩니다. 중요한 기록은 별도 백업하세요.';
+    $('backupSummary').textContent=last+advice;
+    $('backupAdvice').textContent=last+advice+' 백업 버튼을 눌러도 파일이 실제 저장되었는지 다운로드 폴더를 확인해야 합니다.';
+  }
+  function markChanged(){
+    try{localStorage.setItem(CHANGE_KEY,String(Date.now()));}catch(e){}
+    updateBanner();
+  }
+  function saveWorkspace(){
+    const obj={version:1,updated:new Date().toISOString(),fields:{}};
+    for(const id of formIds)obj.fields[id]=$(id).value;
+    try{
+      localStorage.setItem(WORK_KEY,JSON.stringify(obj));
+      status.textContent='✅ 임시 작업 저장됨 · '+new Date().toLocaleTimeString('ko-KR');
+    }catch(e){status.textContent='⚠️ 임시 저장 실패 — 브라우저 공간과 설정을 확인하세요.';}
+  }
+  function scheduleWorkspace(){
+    status.textContent='임시 작업 저장 중…';
+    clearTimeout(saveTimer);
+    saveTimer=setTimeout(saveWorkspace,450);
+  }
+  try{
+    const saved=JSON.parse(localStorage.getItem(WORK_KEY)||'null');
+    if(saved?.version===1 && saved.fields && typeof saved.fields==='object'){
+      for(const id of formIds){if(typeof saved.fields[id]==='string')$(id).value=saved.fields[id];}
+      status.textContent='✅ 이전에 편집하던 작업을 복구했어요.';
+    }
+  }catch(e){status.textContent='⚠️ 임시 작업을 읽지 못했습니다. 저장된 상품·콘텐츠 기록에는 영향이 없습니다.';}
+  formIds.forEach(id=>$(id).addEventListener('input',scheduleWorkspace));
+  $('cTone').addEventListener('change',scheduleWorkspace);
+  // Programmatic filling does not dispatch input events. Capture clicks once UI handlers finish.
+  ['loadSelectedProduct','newProduct','generateContent','regenerateContent','saveProduct','archiveContent'].forEach(id=>{
+    $(id).addEventListener('click',()=>queueMicrotask(scheduleWorkspace));
+  });
+  window.addEventListener('autobiz65:loadDraft',()=>queueMicrotask(scheduleWorkspace));
+  window.addEventListener('autobiz65:restored',()=>queueMicrotask(scheduleWorkspace));
+  $('clearWorkspace').addEventListener('click',()=>{
+    if(!confirm('현재 작성 중인 입력과 글 초안만 초기화할까요? 저장된 상품·보관함·판매 기록은 삭제되지 않습니다.'))return;
+    clearTimeout(saveTimer);
+    for(const id of formIds)$(id).value='';
+    $('cTone').value='friendly';
+    try{localStorage.removeItem(WORK_KEY);}catch(e){}
+    status.textContent='작업 중인 입력을 초기화했습니다. 저장된 자료는 그대로입니다.';
+  });
+  window.addEventListener('autobiz66:data-changed',markChanged);
+  window.addEventListener('autobiz66:backup-requested',()=>{
+    try{localStorage.setItem(BACKUP_KEY,String(Date.now()));}catch(e){}
+    updateBanner();
+  });
+  $('quickBackup').addEventListener('click',()=>{$('exportJson').click();});
+  updateBanner();
 })();
 </script>
 </body>
