@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#10182c" />
-  <title>AutoBiz 6.4 | 자연스러운 콘텐츠 · 개인용 대시보드</title>
+  <title>AutoBiz 6.5 | 자연스러운 콘텐츠 · 개인용 대시보드</title>
   <style>
     :root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#15223b;background:#f5f7fb;font-size:15px}
     *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
@@ -15,16 +15,17 @@
     .panel{display:none}.panel.active{display:block}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}.section-title h2{font-size:20px;margin:0}.muted{color:#69778d;font-size:13px;line-height:1.55}.card{background:white;border:1px solid #e4e9f3;border-radius:18px;padding:23px;box-shadow:0 3px 15px #14213d08;margin-bottom:16px}.card h3{margin:0 0 17px;font-size:16px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:#fff;border:1px solid #e5eaf4;border-radius:17px;padding:19px}.stat .name{color:#71809a;font-size:13px;margin-bottom:10px}.stat .val{font-size:26px;font-weight:850;letter-spacing:-1px;overflow-wrap:anywhere}.stat .val.blue{color:#225ad2}.stat .val.green{color:#0a8a64}
     label{display:block;color:#44536b;font-size:13px;font-weight:700;margin-bottom:7px}.field{margin-bottom:15px}input,textarea,select{width:100%;border:1px solid #d6dfed;border-radius:11px;padding:12px 13px;background:white;outline:none;min-width:0}input:focus,textarea:focus,select:focus{border-color:#4677ee;box-shadow:0 0 0 3px #4677ee20}textarea{resize:vertical;min-height:92px}.btn{border:0;border-radius:11px;padding:11px 16px;background:#245edb;color:white;font-weight:750}.btn:hover{filter:brightness(.97)}.btn.alt{background:#eaf1fd;color:#1e55b8}.btn.ghost{background:white;border:1px solid #d7e0ee;color:#415371}.btn.red{background:#fff1f2;color:#bc2946}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}.result{white-space:pre-wrap;line-height:1.75;background:#f6f8fd;border:1px solid #e3e9f5;border-radius:14px;padding:18px;min-height:130px;font-size:14px}.info{background:#edf5ff;color:#2355a1;border-radius:11px;padding:11px 13px;margin:12px 0;font-size:13px;line-height:1.6}.status{min-height:20px;margin-top:10px;font-size:13px;color:#366ba7}.status.err{color:#b52e4c}.tblwrap{overflow:auto}.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:570px}.tbl th{text-align:left;background:#f4f7fc;color:#64738b;padding:13px 10px}.tbl td{border-top:1px solid #e8edf6;padding:13px 10px}.tbl th.num,.tbl td.num{text-align:right;font-variant-numeric:tabular-nums}.tbl .del{border:0;background:#fff0f1;color:#b82640;border-radius:8px;padding:6px 10px}.empty{text-align:center;color:#8a97aa;padding:28px}.section-bottom{margin-top:19px}canvas{width:100%;height:270px;display:block}.hint{font-size:12px;color:#71829b;line-height:1.6}.badge{background:#e8f6f0;color:#117651;border-radius:7px;padding:3px 7px;font-size:11px;font-weight:800}.footer{text-align:center;color:#718098;font-size:12px;padding:20px}
     .draft-card{margin:15px 0 19px}.draft-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.btn.small{font-size:12px;padding:6px 10px}.draft-card .result{min-height:80px;padding:14px;font-size:13px}.draft-edit{display:block;width:100%;min-height:155px;line-height:1.8;resize:vertical;background:#f6f8fd;border:1px solid #e3e9f5;border-radius:14px;color:#15223b}.draft-edit:focus{background:#fff}.draft-card .draft-head b{font-size:14px}
+    .library-list{display:grid;gap:10px}.library-item{background:#f8faff;border:1px solid #e4eaf6;border-radius:12px;padding:15px;display:flex;justify-content:space-between;gap:15px;align-items:center}.library-item strong{display:block;overflow-wrap:anywhere}.library-item .muted{margin-top:5px;overflow-wrap:anywhere}.library-item .actions{margin-top:0;justify-content:flex-end}.library-item .actions .btn{white-space:nowrap}.small-note{font-size:12px;color:#64748b}.counter{font-variant-numeric:tabular-nums}.btn:focus-visible,.tab:focus-visible{outline:3px solid #6a95fa;outline-offset:2px}.field-inline{display:flex;gap:8px}.field-inline input{flex:1}.field-inline button{white-space:nowrap}@media(max-width:550px){.library-item{align-items:stretch;flex-direction:column}.library-item .actions{justify-content:flex-start}}
     @media(max-width:730px){.shell{padding:16px 12px 54px}.hero{padding:22px}.hero .symbol{display:none}.hero h1{font-size:21px}.top .pill{display:none}.cols,.two,.three{grid-template-columns:1fr}.card{padding:17px}.stat .val{font-size:23px}.tab{font-size:13px;padding:11px 12px}}
   </style>
 </head>
 <body>
 <div class="shell">
-  <header class="top"><div class="logo"><div class="mark">A</div><div><div class="brand">AutoBiz <span style="color:#3a6de4">6.4</span></div><div class="sub">개인용 비즈니스 관리 웹앱</div></div></div><span class="pill">판매 기록: 브라우저 저장</span></header>
-  <section class="hero"><div><h1>반복 업무를 더 간단하게.</h1><p>판매 기록을 관리하고 확인한 상품 정보를 자연스러운 콘텐츠로 바꾸세요. AI는 문체 선택을 돕고, 게시글에 새로운 사실을 임의로 추가하지 않습니다.</p></div><div class="symbol" aria-hidden="true">▤</div></section>
-  <div class="notice"><b>개인 테스트용 안내</b> — 판매 데이터는 이 브라우저에만 저장되며 다른 기기와 자동 동기화되지 않습니다. <b>AI 문체 추천은 WebGPU 지원 기기에서만 가능</b>하며 최초 모델 다운로드에 많은 데이터와 메모리가 필요할 수 있습니다. 게시용 문구는 AI 원문을 그대로 사용하지 않고 입력 정보와 정해진 문장으로 구성합니다. 입력한 사실 자체는 직접 검토하세요. 로그인·결제 기능은 없고, 실제 고객 정보는 입력하지 마세요.</div>
+  <header class="top"><div class="logo"><div class="mark">A</div><div><div class="brand">AutoBiz <span style="color:#3a6de4">6.5</span></div><div class="sub">상품 · 콘텐츠 · 매출을 한곳에서</div></div></div><span class="pill">데이터: 브라우저에 저장</span></header>
+  <section class="hero"><div><h1>반복 업무를 더 간단하게.</h1><p>상품 정보를 저장하고 필요한 글을 만들고 보관하세요. 판매 기록도 한 화면에서 관리할 수 있습니다. AI는 문체 선택을 돕고, 게시글은 입력한 정보로만 구성합니다.</p></div><div class="symbol" aria-hidden="true">▤</div></section>
+  <div class="notice"><b>개인 테스트용 안내</b> — 상품·콘텐츠·판매 데이터는 이 브라우저에만 저장되며 다른 기기와 자동 동기화되지 않습니다. <b>AI 문체 추천은 WebGPU 지원 기기에서만 가능</b>하며 최초 모델 다운로드에 많은 데이터와 메모리가 필요할 수 있습니다. 게시용 문구는 AI 원문을 그대로 사용하지 않고 입력 정보와 정해진 문장으로 구성합니다. 입력한 사실 자체는 직접 검토하세요. 로그인·결제 기능은 없고, 실제 고객 정보는 입력하지 마세요.</div>
   <nav aria-label="기능 선택">
-    <button class="tab active" data-tab="dashboard">📊 대시보드</button><button class="tab" data-tab="sales">🧾 매출 관리</button><button class="tab" data-tab="content">🤖 콘텐츠 제작</button><button class="tab" data-tab="analysis">📈 상품 분석</button><button class="tab" data-tab="backup">💾 백업/복원</button>
+    <button class="tab active" data-tab="dashboard">📊 대시보드</button><button class="tab" data-tab="sales">🧾 매출 관리</button><button class="tab" data-tab="content">🤖 콘텐츠 제작</button><button class="tab" data-tab="library">📦 상품·글 보관함</button><button class="tab" data-tab="analysis">📈 상품 분석</button><button class="tab" data-tab="backup">💾 백업/복원</button>
   </nav>
   <section id="dashboard" class="panel active">
     <div class="section-title"><h2>매출 대시보드</h2><span class="muted">이 브라우저의 기록 기준</span></div>
@@ -42,11 +43,14 @@
     <div class="section-title"><h2>상품 콘텐츠 제작</h2><span class="badge">입력 정보 기반 · 자연스러운 문장 · 검토용 초안</span></div>
     <div class="cols">
       <div class="card"><h3>상품 정보 입력</h3>
+        <div class="info" style="margin-top:0"><b>📦 저장한 상품 빠르게 불러오기</b><div class="actions" style="align-items:center"><select id="savedProductSelect" aria-label="저장된 상품" style="flex:1;min-width:170px"><option value="">저장된 상품 선택</option></select><button class="btn alt" id="loadSelectedProduct" type="button">불러오기</button></div><p class="hint" id="selectedProductInfo">상품을 저장하면 다음부터 정보를 다시 입력하지 않아도 됩니다.</p></div>
         <div class="field"><label for="cName">상품명</label><input id="cName" value="무선 미니 선풍기" maxlength="90" /></div>
         <div class="field"><label for="cFeature">직접 확인한 상품 특징</label><textarea id="cFeature" maxlength="600">가볍고 휴대하기 편리함</textarea><p class="hint">출시일, 성능, 후기, 수상 경력 등은 직접 확인한 경우에만 입력하세요.</p></div>
         <div class="field"><label for="cTarget">소개 대상 (선택)</label><input id="cTarget" value="학생" maxlength="90" /></div>
         <div class="field"><label for="cPrice">표시할 가격 (원)</label><input id="cPrice" type="number" min="0" step="1" value="15000" /></div>
         <div class="field"><label for="cTone">문체</label><select id="cTone"><option value="friendly">친근하게</option><option value="informative">정보 중심으로</option><option value="short">간결하게</option></select></div>
+        <div class="actions"><button type="button" class="btn alt" id="saveProduct">💾 이 상품 저장</button><button type="button" class="btn ghost" id="newProduct">새 상품 입력</button></div>
+        <div class="status" id="productStatus" role="status"></div>
         <div class="actions"><button type="button" class="btn" id="generateContent">초안 3개 만들기</button><button type="button" class="btn alt" id="regenerateContent">다른 표현으로 다시 만들기</button></div>
         <p class="hint">같은 정보라도 문체와 표현을 바꿔 볼 수 있어요. 새로운 상품 사실을 만들어 넣지는 않습니다.</p>
         <div class="info" style="margin-top:18px"><b>선택 기능 — 기기 내 AI 문체 추천</b><p style="margin:6px 0">브라우저 AI는 문체만 선택합니다. AI 원문을 게시글에 직접 넣지 않으므로 임의의 출시일, 성능, 판매 실적이 추가되지 않도록 설계했어요. 상품 정보 자체는 직접 확인해 주세요.</p></div>
@@ -59,14 +63,31 @@
         <div class="draft-card"><div class="draft-head"><b>📱 인스타그램 게시글</b><button type="button" class="btn ghost small" data-copy="instagram">복사</button></div><textarea class="result draft-edit" id="draftInstagram" aria-label="인스타그램 초안 편집" spellcheck="true" placeholder="초안을 생성하면 여기에 표시됩니다."></textarea></div>
         <div class="draft-card"><div class="draft-head"><b>📝 블로그 소개 글</b><button type="button" class="btn ghost small" data-copy="blog">복사</button></div><textarea class="result draft-edit" id="draftBlog" aria-label="블로그 초안 편집" spellcheck="true" placeholder="초안을 생성하면 여기에 표시됩니다."></textarea></div>
         <div class="draft-card"><div class="draft-head"><b>🎬 30초 쇼츠 대본</b><button type="button" class="btn ghost small" data-copy="shorts">복사</button></div><textarea class="result draft-edit" id="draftShorts" aria-label="쇼츠 초안 편집" spellcheck="true" placeholder="초안을 생성하면 여기에 표시됩니다."></textarea></div>
+        <div class="actions"><button type="button" class="btn" id="archiveContent">📚 이 글 3개 보관함에 저장</button></div>
         <div class="actions"><button type="button" class="btn alt" id="copyContent">전체 복사</button><button type="button" class="btn ghost" id="saveContent">TXT 다운로드</button></div>
         <p class="hint">현재 입력한 상품 정보로 만든 초안이며, 실제 제품 정보를 검증하거나 광고 효과를 보장하는 기능은 아닙니다. 광고·협찬 표시가 필요한 경우 관련 규정에 따라 따로 표기하세요.</p>
       </div>
     </div>
   </section>
+  <section id="library" class="panel">
+    <div class="section-title"><h2>상품·콘텐츠 보관함</h2><span class="muted">이 브라우저에 저장된 항목</span></div>
+    <div class="three" style="margin-bottom:16px"><div class="stat"><div class="name">저장한 상품</div><div class="val blue" id="savedProductCount">0개</div></div><div class="stat"><div class="name">보관한 콘텐츠 묶음</div><div class="val green" id="savedDraftCount">0개</div></div><div class="stat"><div class="name">전체 저장 항목</div><div class="val" id="savedTotalCount">0개</div></div></div>
+    <div class="card"><div class="section-title"><h2 style="font-size:17px">📦 저장된 상품</h2><button type="button" class="btn alt" id="goCreateProduct">상품 추가하기</button></div>
+      <div class="field"><label for="productSearch">상품 검색</label><input id="productSearch" type="search" maxlength="120" placeholder="상품명, 특징 또는 대상 검색" /></div>
+      <div class="library-list" id="productLibraryList"><p class="muted">저장된 상품이 없습니다.</p></div>
+      <p class="hint">‘불러오기’를 누르면 콘텐츠 제작에 상품 정보가 채워집니다. 저장할 때 같은 상품명이라면 덮어쓰기를 확인합니다.</p>
+    </div>
+    <div class="card"><div class="section-title"><h2 style="font-size:17px">📝 저장된 콘텐츠</h2><button type="button" class="btn alt" id="goCreateDraft">글 만들기</button></div>
+      <div class="field"><label for="draftSearch">콘텐츠 검색</label><input id="draftSearch" type="search" maxlength="120" placeholder="상품명, 글 제목, 본문 내용 검색" /></div>
+      <div class="library-list" id="draftLibraryList"><p class="muted">보관된 콘텐츠가 없습니다.</p></div>
+      <p class="hint">콘텐츠는 인스타그램·블로그·쇼츠 글 3개가 한 묶음으로 저장됩니다. 불러와 수정한 뒤 다시 저장하면 새 묶음으로 추가됩니다.</p>
+    </div>
+    <div class="status" id="libraryStatus" role="status"></div>
+    <div class="info">보관함의 자료는 <b>브라우저 저장 공간(localStorage)</b>에만 저장됩니다. 브라우저 데이터 삭제 시 없어질 수 있으니 <b>백업/복원 → 전체 JSON 백업</b>을 이용하세요.</div>
+  </section>
   <section id="analysis" class="panel"><div class="section-title"><h2>상품별 분석</h2><span class="muted">정확한 계산 기반</span></div><div class="three"><div class="stat"><div class="name">상품 종류</div><div class="val" id="productCount">0종</div></div><div class="stat"><div class="name">매출 1위 상품</div><div class="val" id="bestProduct" style="font-size:18px">없음</div></div><div class="stat"><div class="name">판매 기록</div><div class="val" id="salesCount">0건</div></div></div><div class="card section-bottom"><h3>상품별 매출과 이익</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th class="num">이익률</th></tr></thead><tbody id="productRows"></tbody></table></div></div><div class="info">이 분석은 파이썬이나 AI 추측이 아니라 브라우저에서 정확한 산술 계산으로 만듭니다. 실제 경영 의사결정에 사용하기 전에 별도 검증이 필요합니다.</div></section>
-  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><p class="muted">브라우저 기록을 JSON 파일로 백업하거나 Excel에서 열 수 있는 CSV 파일로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">이 앱에서 내보낸 JSON 파일을 불러옵니다. 현재 이 브라우저 기록은 교체되므로 먼저 백업하세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 파일로 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
-  <footer class="footer">AutoBiz 6.4 · 개인 학습용 시제품 · 데이터는 이 브라우저의 localStorage에만 저장됩니다.</footer>
+  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><p class="muted">상품·콘텐츠·판매 기록을 하나의 JSON 파일로 백업하거나 판매 기록만 CSV로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">전체 JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">6.5 전체 JSON 백업을 복원하면 이 브라우저의 상품·콘텐츠·판매 기록이 모두 교체됩니다. 이전 6.4 이하 JSON 백업(판매 기록만 포함)은 판매 기록만 교체하며 보관함은 유지합니다. 먼저 새 백업을 받아 두세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 백업 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
+  <footer class="footer">AutoBiz 6.5 · 개인 학습용 시제품 · 상품·콘텐츠·매출 정보는 이 브라우저에만 저장됩니다.</footer>
 </div>
 <script>
 (() => {
@@ -101,13 +122,51 @@ function render(){
 }
 function drawChart(){const canvas=$('chart');const ctx=canvas.getContext('2d');if(!ctx)return;const rect=canvas.getBoundingClientRect();const w=Math.max(300,rect.width||600),h=270;canvas.width=Math.round(w*devicePixelRatio);canvas.height=Math.round(h*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,h);const L=65,R=18,T=20,B=42;const iw=w-L-R,ih=h-T-B;let rev=0,profit=0;const data=sales.map(s=>({r:rev+=s.revenue,p:profit+=s.profit}));const values=data.flatMap(x=>[x.r,x.p]);const min=Math.min(0,...values),max=Math.max(1,...values);ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#e8edf6';ctx.fillStyle='#71809a';for(let i=0;i<=4;i++){const y=T+ih*i/4;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();const v=max-(max-min)*i/4;ctx.fillText(Math.round(v).toLocaleString('ko-KR'),3,y+4)}if(!data.length){ctx.fillStyle='#99a5b7';ctx.textAlign='center';ctx.fillText('판매 기록을 추가하면 그래프가 표시됩니다.',w/2,h/2);ctx.textAlign='left';return;}const x=i=>L+(data.length===1?iw/2:iw*i/(data.length-1));const y=v=>T+ih-(v-min)/(max-min)*ih;for(const [k,color] of [['r','#2c67e4'],['p','#0c956b']]){ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.5;ctx.beginPath();data.forEach((d,i)=>i?ctx.lineTo(x(i),y(d[k])):ctx.moveTo(x(i),y(d[k])));ctx.stroke();for(let i=0;i<data.length;i++){ctx.beginPath();ctx.arc(x(i),y(data[i][k]),3.5,0,Math.PI*2);ctx.fill();}}ctx.fillStyle='#74839a';ctx.textAlign='center';ctx.fillText('판매 기록 순서 →',L+iw/2,h-8);ctx.textAlign='left';}
 function download(name,text,mime){const blob=new Blob([text],{type:mime});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);}
-function backup(){download('AutoBiz6_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({version:1,records:sales},null,2),'application/json;charset=utf-8');}
+function backup(){
+ try{
+  const products=JSON.parse(localStorage.getItem('autobiz65_products_v1')||'[]');
+  const drafts=JSON.parse(localStorage.getItem('autobiz65_drafts_v1')||'[]');
+  if(!Array.isArray(products)||!Array.isArray(drafts))throw Error('보관함 형식 오류');
+  download('AutoBiz65_full_backup_'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify({version:2,app:'AutoBiz',exportedAt:new Date().toISOString(),records:sales,products,drafts},null,2),'application/json;charset=utf-8');
+  setStatus('backupStatus','✅ 판매 '+sales.length+'건 · 상품 '+products.length+'개 · 콘텐츠 '+drafts.length+'개를 백업했습니다.');
+ }catch(err){setStatus('backupStatus','백업 실패: '+err.message,true);}
+}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));if(b.dataset.tab==='dashboard')drawChart();}));
 $('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();if(lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다.');const prev=sales[sales.length-1];if(prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');sales.push(normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint}));store();lastSubmission=fingerprint;lastSubmissionAt=now;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
 $('salesRows').addEventListener('click',e=>{const btn=e.target.closest('button[data-id]');if(!btn)return;const s=sales.find(x=>x.id===btn.dataset.id);if(!s)return;if(!confirm(`'${s.name}' 기록을 삭제할까요?\n삭제 전 JSON 백업 다운로드를 권장합니다.`))return;sales=sales.filter(x=>x.id!==btn.dataset.id);store();render();setStatus('saleStatus','선택한 기록을 삭제했습니다.');});
 $('exportJson').addEventListener('click',backup);
 $('exportCsv').addEventListener('click',()=>{const esc=s=>'"'+String(s).replaceAll('"','""')+'"';const lines=[['상품명','수량','매출','예상 이익'].map(esc).join(',')].concat(sales.map(s=>[s.name,s.qty,s.revenue,s.profit].map(esc).join(',')));download('AutoBiz6_sales.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');});
-$('restoreJson').addEventListener('click',async()=>{try{const f=$('importJson').files[0];if(!f)throw Error('JSON 백업 파일을 선택하세요.');if(f.size>5_000_000)throw Error('파일 크기가 너무 큽니다.');const parsed=JSON.parse(await f.text());if(parsed.version!==1||!Array.isArray(parsed.records)||parsed.records.length>10000)throw Error('AutoBiz 6.0 백업 파일이 아닙니다.');const next=parsed.records.map(normalize);if(!confirm('현재 이 브라우저의 판매 기록을 백업 내용으로 교체할까요?'))return;sales=next;store();render();setStatus('backupStatus',`✅ ${sales.length}건 복원했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
+$('restoreJson').addEventListener('click',async()=>{
+ try{
+  const f=$('importJson').files[0];if(!f)throw Error('JSON 백업 파일을 선택하세요.');
+  if(f.size>10_000_000)throw Error('JSON 파일이 너무 큽니다.');
+  const parsed=JSON.parse(await f.text());
+  if(![1,2].includes(parsed.version)||!Array.isArray(parsed.records)||parsed.records.length>10000)throw Error('지원하지 않는 AutoBiz JSON 백업입니다.');
+  const nextSales=parsed.records.map(normalize);
+  let products=null,drafts=null;
+  if(parsed.version===2){
+    if(!Array.isArray(parsed.products)||!Array.isArray(parsed.drafts))throw Error('6.5 전체 백업 형식이 올바르지 않습니다.');
+    if(!window.AutoBiz65?.validateBackup)throw Error('보관함 초기화가 끝나지 않았습니다. 페이지를 새로고침하세요.');
+    ({products,drafts}=window.AutoBiz65.validateBackup(parsed.products,parsed.drafts));
+  }
+  const message=parsed.version===2?
+    `판매 ${nextSales.length}건 · 상품 ${products.length}개 · 콘텐츠 ${drafts.length}개로 모든 현재 기록을 교체할까요?`:
+    `이전 버전 판매 기록 ${nextSales.length}건으로 판매 기록만 교체할까요? 저장된 상품·콘텐츠는 유지합니다.`;
+  if(!confirm(message+'\n현재 내용을 먼저 백업하는 것이 좋습니다.'))return;
+  const salesKey=KEY, pKey='autobiz65_products_v1', dKey='autobiz65_drafts_v1';
+  const keys=parsed.version===2?[salesKey,pKey,dKey]:[salesKey];
+  const old=Object.fromEntries(keys.map(k=>[k,localStorage.getItem(k)]));
+  try{
+    localStorage.setItem(salesKey,JSON.stringify(nextSales));
+    if(parsed.version===2){localStorage.setItem(pKey,JSON.stringify(products));localStorage.setItem(dKey,JSON.stringify(drafts));}
+  }catch(error){
+    for(const k of keys){try{if(old[k]===null)localStorage.removeItem(k);else localStorage.setItem(k,old[k]);}catch(_) {}}
+    throw Error('저장 공간이 부족하거나 브라우저 저장이 차단되었습니다. 기존 데이터를 유지하려고 복원했습니다.');
+  }
+  sales=nextSales;render();window.dispatchEvent(new Event('autobiz65:restored'));
+  setStatus('backupStatus',parsed.version===2?`✅ 전체 복원 완료: 판매 ${sales.length}건 · 상품 ${products.length}개 · 콘텐츠 ${drafts.length}개`:`✅ 판매 기록 ${sales.length}건 복원 · 기존 보관함 유지`);
+ }catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}
+});
 function splitCSV(line){const out=[];let field='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(quoted&&line[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){out.push(field);field='';}else field+=c;}out.push(field);return out;}
 $('loadCsv').addEventListener('click',async()=>{try{const f=$('importCsv').files[0];if(!f)throw Error('CSV 파일을 선택하세요.');if(f.size>2_000_000)throw Error('파일 크기가 너무 큽니다.');const lines=(await f.text()).replace(/^\ufeff/,'').trim().split(/\r?\n/);if(lines.length<2)throw Error('데이터가 없는 CSV입니다.');const heads=splitCSV(lines[0]).map(x=>x.trim().replace(/^\ufeff/,''));const find=arr=>arr.map(x=>heads.indexOf(x)).find(x=>x!==-1);const idx=[find(['상품명','상품 이름']),find(['수량','판매 수량']),find(['매출']),find(['예상 이익','예상이익'])];if(idx.some(x=>x===undefined))throw Error('필수 열(상품명/수량/매출/예상 이익)을 찾지 못했습니다.');const next=lines.slice(1).filter(Boolean).map(line=>{const cells=splitCSV(line);return normalize({name:cells[idx[0]],qty:Number(cells[idx[1]]),revenue:Number(cells[idx[2]]),profit:Number(cells[idx[3]])});});if(next.length>10000)throw Error('기록이 너무 많습니다.');if(!confirm(`CSV 기록 ${next.length}건을 추가할까요? 기존 기록과 중복될 수 있습니다.`))return;sales=[...sales,...next];store();render();setStatus('backupStatus',`✅ CSV 기록 ${next.length}건을 추가했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
 load();render();window.addEventListener('resize',()=>{if($('dashboard').classList.contains('active'))drawChart();});
@@ -235,11 +294,18 @@ async function copyText(text){
   catch(e){setStatus(contentStatus,'복사 권한을 확인해 주세요. 글을 직접 선택해 복사할 수도 있습니다.',true);}
 }
 document.querySelectorAll('[data-copy]').forEach(button=>button.addEventListener('click',()=>copyText(currentDrafts()?.[button.dataset.copy]??'')));
+window.addEventListener('autobiz65:loadDraft',event=>{
+  const data=event.detail;
+  if(!data?.body)return;
+  for(const k of ['instagram','blog','shorts'])outputs[k].value=String(data.body[k]||'');
+  hasDraft=true;draftVersion=0;draftMode.textContent='보관함에서 불러온 초안';
+  setStatus(contentStatus,'✅ 보관함에서 글을 불러왔어요. 수정 후 다시 저장할 수 있습니다.');
+});
 byId('copyContent').addEventListener('click',()=>copyText(allContent()));
 byId('saveContent').addEventListener('click',()=>{
   if(!hasDraft){setStatus(contentStatus,'먼저 초안을 생성하세요.',true);return;}
   const url=URL.createObjectURL(new Blob([allContent()],{type:'text/plain;charset=utf-8'}));
-  const a=document.createElement('a');a.href=url;a.download='AutoBiz64_콘텐츠초안.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
+  const a=document.createElement('a');a.href=url;a.download='AutoBiz65_콘텐츠초안.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);
 });
 async function checkSupport(){
   if (!window.isSecureContext || !navigator.gpu) return '이 브라우저에서는 WebGPU가 지원되지 않습니다. 템플릿은 정상 이용 가능합니다.';
@@ -290,6 +356,177 @@ genBtn.addEventListener('click',async()=>{
     setStatus(aiStatus,'AI 문체 추천 실패: '+String(error?.message||error)+'. 안전한 템플릿 초안으로 대체했어요.',true);
   }finally{generating=false;genBtn.disabled=false;}
 });
+</script>
+<script>
+(() => {
+'use strict';
+const $=id=>document.getElementById(id);
+const PK='autobiz65_products_v1', DK='autobiz65_drafts_v1';
+const fmt=n=>Number(n).toLocaleString('ko-KR')+'원';
+const clean=s=>String(s??'').trim().replace(/[\u0000-\u001f]+/g,' ').replace(/\s+/g,' ');
+const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>crypto.randomUUID?.()??('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));
+const time=()=>new Date().toISOString();
+function status(id,msg,error=false){$(id).textContent=msg;$(id).classList.toggle('err',error);}
+function validateProduct(p){
+ if(!p||typeof p!=='object')throw Error('상품 형식이 올바르지 않습니다.');
+ const name=clean(p.name),feature=clean(p.feature),target=clean(p.target),price=Number(p.price);
+ if(!name||!feature||name.length>90||feature.length>600||target.length>90||!Number.isSafeInteger(price)||price<0||price>1e12)throw Error('상품 정보에 잘못된 값이 있습니다.');
+ return {id:String(p.id||uid()).slice(0,90),name,feature,target,price,updated:String(p.updated||time()).slice(0,40)};
+}
+function validateDraft(d){
+ if(!d||typeof d!=='object'||!d.body||typeof d.body!=='object')throw Error('저장된 콘텐츠 형식이 잘못됐습니다.');
+ const title=clean(d.title),productName=clean(d.productName);
+ const body={instagram:String(d.body.instagram??''),blog:String(d.body.blog??''),shorts:String(d.body.shorts??'')};
+ if(!title||title.length>120||productName.length>90||Object.values(body).some(x=>x.length>15000)||Object.values(body).every(x=>!x.trim()))throw Error('저장된 콘텐츠가 비어 있거나 너무 깁니다.');
+ return {id:String(d.id||uid()).slice(0,90),title,productName,body,tone:['friendly','informative','short'].includes(d.tone)?d.tone:'friendly',created:String(d.created||time()).slice(0,40)};
+}
+function validateBackup(products,drafts){
+ if(products.length>500||drafts.length>500)throw Error('보관함 항목이 너무 많습니다. (각 최대 500개)');
+ const ps=products.map(validateProduct),ds=drafts.map(validateDraft);
+ if(new Set(ps.map(x=>x.id)).size!==ps.length||new Set(ds.map(x=>x.id)).size!==ds.length)throw Error('백업 파일에 중복된 ID가 있습니다.');
+ return {products:ps,drafts:ds};
+}
+window.AutoBiz65={validateBackup};
+function fromStore(key,validate){
+ try{const raw=JSON.parse(localStorage.getItem(key)||'[]');if(!Array.isArray(raw))throw Error('형식 오류');return raw.map(validate);}catch(error){status('libraryStatus','⚠️ 저장 데이터를 읽지 못했습니다. 기존 JSON 백업을 확인하세요.',true);return null;}
+}
+let products=fromStore(PK,validateProduct),drafts=fromStore(DK,validateDraft), editingProductId=null;
+if(!products)products=[];
+if(!drafts)drafts=[];
+function saveList(key,next){
+ try{localStorage.setItem(key,JSON.stringify(next));return true;}
+ catch(error){status('libraryStatus','⚠️ 브라우저 저장 공간이 부족하거나 저장이 차단됐습니다. 항목을 줄이거나 백업을 받아 보세요.',true);return false;}
+}
+function setTab(tab){
+ const button=document.querySelector(`.tab[data-tab="${tab}"]`);
+ if(button)button.click();
+}
+function readInput(){
+ const name=clean($('cName').value),feature=clean($('cFeature').value),target=clean($('cTarget').value),raw=$('cPrice').value;
+ if(!name||!feature||raw==='')throw Error('상품명, 특징, 가격을 입력하세요.');
+ return validateProduct({id:editingProductId||uid(),name,feature,target,price:Number(raw),updated:time()});
+}
+function fillProduct(product){
+ $('cName').value=product.name;$('cFeature').value=product.feature;$('cTarget').value=product.target;$('cPrice').value=String(product.price);
+ editingProductId=product.id;
+ $('savedProductSelect').value=product.id;
+ $('selectedProductInfo').textContent='수정 중: '+product.name+' · 저장하면 기존 상품 정보를 업데이트합니다.';
+ setTab('content');status('productStatus','✅ '+product.name+' 상품을 불러왔습니다.');
+}
+function resetProduct(){
+ editingProductId=null;
+ $('cName').value='';$('cFeature').value='';$('cTarget').value='';$('cPrice').value='';
+ $('savedProductSelect').value='';$('selectedProductInfo').textContent='새 상품을 입력하고 ‘이 상품 저장’을 누르세요.';
+ status('productStatus','새 상품을 입력할 수 있어요.');
+ setTab('content');$('cName').focus();
+}
+function loadProduct(id){
+ const p=products.find(x=>x.id===id);
+ if(!p){status('productStatus','저장된 상품을 찾지 못했습니다.',true);return;}
+ fillProduct(p);
+}
+function listItem(body,buttons){
+ const item=document.createElement('div');item.className='library-item';
+ const content=document.createElement('div');content.style.minWidth='0';content.innerHTML=body;
+ const actions=document.createElement('div');actions.className='actions';
+ for(const [label,type,id,variant] of buttons){const btn=document.createElement('button');btn.type='button';btn.className='btn small '+variant;btn.textContent=label;btn.dataset.action=type;btn.dataset.id=id;actions.appendChild(btn);}
+ item.append(content,actions);return item;
+}
+function render(){
+ $('savedProductCount').textContent=products.length+'개';$('savedDraftCount').textContent=drafts.length+'개';$('savedTotalCount').textContent=(products.length+drafts.length)+'개';
+ const prev=$('savedProductSelect').value;
+ const select=$('savedProductSelect');select.replaceChildren();
+ const blank=new Option('저장된 상품 선택','');select.add(blank);
+ for(const p of [...products].sort((a,b)=>a.name.localeCompare(b.name,'ko')))select.add(new Option(p.name,p.id));
+ select.value=products.some(x=>x.id===prev)?prev:(editingProductId&&products.some(x=>x.id===editingProductId)?editingProductId:'');
+ const pq=clean($('productSearch').value).toLowerCase();
+ const shown=products.filter(p=>[p.name,p.feature,p.target].some(x=>x.toLowerCase().includes(pq)));
+ const pList=$('productLibraryList');pList.replaceChildren();
+ for(const p of shown){
+  const snippet=p.feature.length>75?p.feature.slice(0,75)+'…':p.feature;
+  pList.appendChild(listItem(`<strong>${escape(p.name)}</strong><div class="muted">${escape(snippet)} · ${escape(fmt(p.price))}</div>`,[['불러오기','load-product',p.id,'alt'],['삭제','delete-product',p.id,'red']]));
+ }
+ if(!shown.length){const m=document.createElement('p');m.className='muted';m.textContent=products.length?'검색 결과가 없습니다.':'아직 저장된 상품이 없습니다. 콘텐츠 제작에서 상품을 저장해 보세요.';pList.append(m);}
+ const dq=clean($('draftSearch').value).toLowerCase();
+ const showDrafts=[...drafts].reverse().filter(d=>[d.title,d.productName,...Object.values(d.body)].some(x=>x.toLowerCase().includes(dq)));
+ const dList=$('draftLibraryList');dList.replaceChildren();
+ for(const d of showDrafts){
+  const date=Number.isFinite(Date.parse(d.created))?new Date(d.created).toLocaleString('ko-KR'):'';
+  dList.appendChild(listItem(`<strong>${escape(d.title)}</strong><div class="muted">${escape(d.productName||'상품 미지정')} · ${escape(date)}</div>`,[['불러오기','load-draft',d.id,'alt'],['삭제','delete-draft',d.id,'red']]));
+ }
+ if(!showDrafts.length){const m=document.createElement('p');m.className='muted';m.textContent=drafts.length?'검색 결과가 없습니다.':'아직 보관된 콘텐츠가 없습니다. 글을 만들고 보관함에 저장해 보세요.';dList.append(m);}
+}
+$('saveProduct').addEventListener('click',()=>{
+ try{
+  const p=readInput();const same=products.find(x=>x.name===p.name&&x.id!==editingProductId);
+  if(same){if(!confirm('이미 같은 상품명이 있습니다. 기존 상품 정보를 업데이트할까요?'))return;p.id=same.id;}
+  const index=products.findIndex(x=>x.id===p.id);
+  if(index<0&&products.length>=500)throw Error('상품은 최대 500개까지 저장할 수 있습니다.');
+  if(index>=0&&!confirm('기존 상품 정보를 새 내용으로 수정해 저장할까요?'))return;
+  const next=[...products];
+  if(index>=0)next[index]=p;
+  else{const sameIndex=next.findIndex(x=>x.id===p.id);if(sameIndex>=0)next[sameIndex]=p;else next.push(p);}
+  if(!saveList(PK,next))return;
+  products=next;editingProductId=p.id;render();$('savedProductSelect').value=p.id;
+  $('selectedProductInfo').textContent='저장됨: '+p.name+' · 새로 입력하지 않고 불러올 수 있습니다.';
+  status('productStatus','✅ 상품 정보가 저장됐습니다.');status('libraryStatus','상품 정보를 저장했습니다.');
+ }catch(e){status('productStatus','⚠️ '+e.message,true);}
+});
+$('newProduct').addEventListener('click',resetProduct);
+$('loadSelectedProduct').addEventListener('click',()=>{const id=$('savedProductSelect').value;if(!id){status('productStatus','먼저 상품을 선택하세요.',true);return;}loadProduct(id);});
+$('savedProductSelect').addEventListener('change',()=>{const p=products.find(x=>x.id===$('savedProductSelect').value);$('selectedProductInfo').textContent=p?'선택: '+p.name+' · 불러오기 버튼을 누르세요.':'저장된 상품을 선택해 불러오세요.';});
+$('productSearch').addEventListener('input',render);
+$('draftSearch').addEventListener('input',render);
+$('productLibraryList').addEventListener('click',event=>{
+ const btn=event.target.closest('button[data-action]');if(!btn)return;
+ const item=products.find(x=>x.id===btn.dataset.id);if(!item)return;
+ if(btn.dataset.action==='load-product')loadProduct(item.id);
+ if(btn.dataset.action==='delete-product'){
+  if(!confirm(`‘${item.name}’ 상품을 삭제할까요? 판매 기록과 보관한 콘텐츠는 삭제되지 않습니다.`))return;
+  const next=products.filter(x=>x.id!==item.id);if(!saveList(PK,next))return;
+  products=next;if(editingProductId===item.id)editingProductId=null;
+  render();status('libraryStatus','상품 정보를 삭제했습니다.');
+ }
+});
+$('archiveContent').addEventListener('click',()=>{
+ const body={instagram:$('draftInstagram').value,blog:$('draftBlog').value,shorts:$('draftShorts').value};
+ if(Object.values(body).every(x=>!x.trim())){status('contentStatus','⚠️ 초안을 생성한 후 보관하세요.',true);return;}
+ try{
+  if(drafts.length>=500)throw Error('콘텐츠는 최대 500묶음까지 저장할 수 있습니다.');
+  const productName=clean($('cName').value).slice(0,90);
+  const title=(productName||'상품 미지정')+' · '+new Date().toLocaleString('ko-KR');
+  const d=validateDraft({id:uid(),title,productName,body,tone:$('cTone').value,created:time()});
+  const next=[...drafts,d];
+  if(!saveList(DK,next)){status('contentStatus','⚠️ 저장 공간 문제로 콘텐츠를 보관하지 못했습니다.',true);return;}
+  drafts=next;render();status('contentStatus','✅ 글 3개를 보관함에 저장했어요. 「상품·글 보관함」에서 검색할 수 있습니다.');
+ }catch(e){status('contentStatus','⚠️ '+e.message,true);}
+});
+$('draftLibraryList').addEventListener('click',event=>{
+ const btn=event.target.closest('button[data-action]');if(!btn)return;
+ const item=drafts.find(x=>x.id===btn.dataset.id);if(!item)return;
+ if(btn.dataset.action==='load-draft'){
+  if(['draftInstagram','draftBlog','draftShorts'].some(id=>$(id).value.trim())&&!confirm('현재 편집 중인 초안을 보관된 글로 교체할까요? 보관함에 저장하지 않은 수정 내용은 사라질 수 있습니다.'))return;
+  if(item.productName)$('cName').value=item.productName;
+  $('cTone').value=item.tone;
+  window.dispatchEvent(new CustomEvent('autobiz65:loadDraft',{detail:item}));
+  setTab('content');status('libraryStatus','글을 콘텐츠 제작으로 불러왔습니다.');
+ }
+ if(btn.dataset.action==='delete-draft'){
+  if(!confirm(`‘${item.title}’ 글 묶음을 삭제할까요?`))return;
+  const next=drafts.filter(x=>x.id!==item.id);if(!saveList(DK,next))return;
+  drafts=next;render();status('libraryStatus','콘텐츠를 삭제했습니다.');
+ }
+});
+$('goCreateProduct').addEventListener('click',resetProduct);
+$('goCreateDraft').addEventListener('click',()=>setTab('content'));
+window.addEventListener('autobiz65:restored',()=>{
+ const ps=fromStore(PK,validateProduct),ds=fromStore(DK,validateDraft);
+ if(ps!==null)products=ps;if(ds!==null)drafts=ds;
+ editingProductId=null;render();status('libraryStatus','✅ 백업에서 복원한 데이터를 불러왔습니다.');
+});
+render();
+})();
 </script>
 </body>
 </html>
