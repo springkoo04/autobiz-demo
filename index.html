@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#151929" />
-  <title>AutoBiz 7.0 Beta — 새로운 워크스페이스</title>
+  <title>AutoBiz 7.0 Beta — 대시보드 개선</title>
   <style>
 
 /* AutoBiz 7.0 | Workspace Design Edition
@@ -176,6 +176,15 @@ canvas{width:100%;height:270px;display:block}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 
+
+/* Dashboard polish - existing sales data remains in the original localStorage key */
+.dashboard-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:-3px 0 18px;padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:13px}
+.dashboard-tools label{margin:0;font-size:12px;white-space:nowrap}
+.dashboard-tools select{width:auto;min-width:180px;max-width:100%;padding:9px 12px;font-size:12px}
+.dashboard-tools .muted{margin-left:auto}
+.kind-select{min-width:100px;padding:7px 9px;font-size:12px;border-radius:9px}
+.kind-pill{display:inline-block;border-radius:7px;padding:3px 7px;background:#f0f1f5;color:#6b7386;font-size:10px;font-weight:700}
+@media(max-width:640px){.dashboard-tools{align-items:stretch}.dashboard-tools select{flex:1}.dashboard-tools .muted{width:100%;margin:0}.kind-select{min-width:100px}}
 </style>
 <style>.btn svg{width:14px;height:14px;stroke-width:1.9;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}.side-note svg{width:15px;height:15px;stroke-width:1.8;fill:none;stroke:currentColor}.backup-icon svg,.headline-icon svg,.quick-icon svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}</style>
 </head>
@@ -212,7 +221,7 @@ canvas{width:100%;height:270px;display:block}
   <div class="welcome"><div><div class="eyebrow">YOUR BUSINESS, SIMPLIFIED</div><h1>일을 더 가볍게, 관리는 더 똑똑하게.</h1><p>홍보 콘텐츠부터 매출까지. 지금 필요한 업무를 하나의 공간에서 관리하세요.</p></div><div class="headline-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-spark"/></svg></div></div>
   <section class="backup-strip" id="backupStrip" aria-live="polite"><div class="backup-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-backup"/></svg></div><div class="backup-text"><strong id="backupHeadline">자동 저장 · 백업 확인</strong><span id="backupSummary">브라우저에 저장하는 중입니다.</span></div><button type="button" class="btn alt" id="quickBackup">전체 백업 받기 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></button></section>
   <section id="dashboard" class="panel active">
-    <div class="section-title"><h2>비즈니스 현황</h2><span class="muted">입력한 판매 기록 기준 · 세금·광고비 미포함</span></div>
+    <div class="section-title"><h2>비즈니스 현황</h2><span class="muted">직접 입력한 기록 · 세금·광고비 미포함</span></div><div class="dashboard-tools"><label for="dashboardFilter">표시할 기록</label><select id="dashboardFilter" aria-label="대시보드 매출 구분"><option value="all">전체 (테스트 포함)</option><option value="real">실제 매출만</option><option value="test">테스트 매출만</option><option value="unknown">미분류 기록</option></select><span id="filterSummary" class="muted" aria-live="polite">전체 기록 기준</span></div>
     <div class="three"><div class="stat"><div class="name">총매출</div><div class="val blue" id="totalRevenue">0원</div></div><div class="stat"><div class="name">총 예상 이익</div><div class="val green" id="totalProfit">0원</div></div><div class="stat"><div class="name">전체 예상 이익률</div><div class="val" id="totalMargin">0.0%</div></div></div>
     <div class="section-title" style="margin:28px 0 14px"><h2 style="font-size:17px">빠른 작업</h2><span class="muted">자주 사용하는 기능으로 바로 이동</span></div>
     <div class="quicklinks">
@@ -221,15 +230,15 @@ canvas{width:100%;height:270px;display:block}
       <button type="button" class="quicklink" data-go="library"><span class="quick-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-archive"/></svg></span><span><strong>보관함 열기</strong><small>저장한 상품과 글 확인</small></span></button>
     </div>
     <div class="dashboard-grid">
-      <div class="card"><h3>매출 성장 추이</h3><canvas id="chart" role="img" aria-label="누적 매출 및 예상 이익 그래프"></canvas><div class="legend"><span><i class="legend-dot"></i>누적 매출</span><span><i class="legend-dot profit"></i>누적 예상 이익</span></div><div class="hint">판매 기록 순서에 따라 표시됩니다.</div></div>
+      <div class="card"><h3 id="chartHeading">매출 성장 추이</h3><canvas id="chart" role="img" aria-label="누적 매출 및 예상 이익 그래프"></canvas><div class="legend"><span><i class="legend-dot"></i>누적 매출</span><span><i class="legend-dot profit"></i>누적 예상 이익</span></div><div class="hint">기록이 1건일 때는 추이 대신 매출·이익 비교를 보여줍니다.</div></div>
       <div class="card"><h3>최근 판매 기록</h3><div id="recent"></div></div>
     </div>
   </section>
   <section id="sales" class="panel">
     <div class="section-title"><h2>판매 기록 관리</h2><span class="muted">가상 데이터로 테스트해 보세요</span></div>
-    <div class="cols"><div class="card"><h3>새 판매 기록</h3><form id="saleForm"><div class="field"><label for="saleName">상품 이름</label><input id="saleName" required maxlength="90" value="무선 미니 선풍기" /></div><div class="two"><div class="field"><label for="salePrice">판매가 (원)</label><input id="salePrice" type="number" min="0" step="1" value="15000" required /></div><div class="field"><label for="saleCost">원가 (원)</label><input id="saleCost" type="number" min="0" step="1" value="9000" required /></div><div class="field"><label for="saleQty">수량</label><input id="saleQty" type="number" min="1" step="1" value="5" required /></div><div class="field"><label for="saleShip">건당 배송비 (원)</label><input id="saleShip" type="number" min="0" step="1" value="0" required /></div><div class="field"><label for="saleFee">수수료 (%)</label><input id="saleFee" type="number" min="0" max="100" step="0.1" value="0" required /></div></div><div class="field"><label class="check-line"><input type="checkbox" id="allowDuplicateSale" /> 실제 별도 주문으로 확인했으므로 동일 판매 기록 추가 허용</label></div><button type="submit" class="btn">판매 기록 추가</button><div class="status" id="saleStatus" role="status"></div></form></div>
+    <div class="cols"><div class="card"><h3>새 판매 기록</h3><form id="saleForm"><div class="field"><label for="saleName">상품 이름</label><input id="saleName" required maxlength="90" value="무선 미니 선풍기" /></div><div class="two"><div class="field"><label for="salePrice">판매가 (원)</label><input id="salePrice" type="number" min="0" step="1" value="15000" required /></div><div class="field"><label for="saleCost">원가 (원)</label><input id="saleCost" type="number" min="0" step="1" value="9000" required /></div><div class="field"><label for="saleQty">수량</label><input id="saleQty" type="number" min="1" step="1" value="5" required /></div><div class="field"><label for="saleShip">건당 배송비 (원)</label><input id="saleShip" type="number" min="0" step="1" value="0" required /></div><div class="field"><label for="saleFee">수수료 (%)</label><input id="saleFee" type="number" min="0" max="100" step="0.1" value="0" required /></div></div><div class="field"><label for="saleKind">기록 구분</label><select id="saleKind"><option value="test">테스트 매출 (기본)</option><option value="real">실제 매출</option></select><p class="hint">연습용 기록은 테스트로 저장하세요. 실제 매출은 실제 판매가 확인된 경우에만 선택하세요.</p></div><div class="field"><label class="check-line"><input type="checkbox" id="allowDuplicateSale" /> 실제 별도 주문으로 확인했으므로 동일 판매 기록 추가 허용</label></div><button type="submit" class="btn">판매 기록 추가</button><div class="status" id="saleStatus" role="status"></div></form></div>
       <div class="card"><h3>계산 방식</h3><p class="muted">매출 = 판매가 × 수량</p><p class="muted">예상 이익 = 매출 − (원가 × 수량) − (배송비 × 수량) − 판매 수수료</p><div class="info">세금, 광고비, 포장비, 환불, 광고·협찬 비용 등 추가 비용은 포함되지 않습니다. 실제 회계용 장부가 아닌 실험용 계산기입니다.</div><p class="muted">같은 내용의 기록을 2분 안에 반복 입력하면 실수로 판단해 차단합니다. 실제로 별도 주문이라면 아래 체크박스를 선택해 추가할 수 있습니다.</p></div></div>
-    <div class="card"><h3>판매 내역 <span id="count" class="badge">0건</span></h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th>관리</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
+    <div class="card"><h3>판매 내역 <span id="count" class="badge">0건</span></h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th>구분 (변경 가능)</th><th>관리</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
   </section>
   <section id="content" class="panel">
     <div class="section-title"><h2>상품·서비스 콘텐츠 제작</h2><span class="badge">입력 정보 기반 · 자연스러운 문장 · 검토용 초안</span></div>
@@ -295,6 +304,9 @@ const $=id=>document.getElementById(id);
 const currency=n=>Math.round(n).toLocaleString('ko-KR')+'원';
 const safeNum=v=>Number.isFinite(Number(v))?Number(v):0;
 let sales=[];
+let dashboardFilter='all';
+const kinds={real:'실제',test:'테스트',unknown:'미분류'};
+const filteredSales=()=>dashboardFilter==='all'?sales:sales.filter(s=>s.kind===dashboardFilter);
 let lastSubmission=null;
 let lastSubmissionAt=0;
 const emptyRow=cols=>`<tr><td colspan="${cols}" class="empty">아직 판매 기록이 없습니다.</td></tr>`;
@@ -303,22 +315,51 @@ function normalize(row){
  const name=String(row.name||'').trim().slice(0,90);
  const qty=Number(row.qty), revenue=Number(row.revenue), profit=Number(row.profit);
  if(!name||![qty,revenue,profit].every(Number.isFinite)||qty<=0||!Number.isInteger(qty)||revenue<0||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('판매 기록 형식이 잘못되었습니다.');
- return {id: String(row.id||(crypto.randomUUID?.()??('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)))),name,qty,revenue,profit,created:String(row.created||new Date().toISOString()),fingerprint:String(row.fingerprint||'')};
+ return {id: String(row.id||(crypto.randomUUID?.()??('id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)))),name,qty,revenue,profit,created:String(row.created||new Date().toISOString()),fingerprint:String(row.fingerprint||''),kind:['real','test'].includes(row.kind)?row.kind:'unknown'};
 }
 function store(next=sales){try{localStorage.setItem(KEY,JSON.stringify(next));window.dispatchEvent(new Event('autobiz66:data-changed'));return true;}catch(e){alert('브라우저 저장 실패: 저장 공간 또는 설정을 확인하세요. JSON 백업을 권장합니다.');return false;}}
 function load(){try{const raw=JSON.parse(localStorage.getItem(KEY)||'[]');sales=Array.isArray(raw)?raw.map(normalize):[];}catch(e){sales=[];alert('저장된 데이터를 읽지 못했습니다. 이전 JSON 백업으로 복원하세요.');}}
 function setStatus(id,msg,error=false){$(id).textContent=msg;$(id).classList.toggle('err',error);}
 function group(){const map=new Map();for(const s of sales){const p=map.get(s.name)||{name:s.name,qty:0,revenue:0,profit:0};p.qty+=s.qty;p.revenue+=s.revenue;p.profit+=s.profit;map.set(s.name,p);}return Array.from(map.values()).sort((a,b)=>b.revenue-a.revenue);}
 function render(){
- const revenue=sales.reduce((a,x)=>a+x.revenue,0),profit=sales.reduce((a,x)=>a+x.profit,0);
+ const selected=filteredSales();
+ const revenue=selected.reduce((a,x)=>a+x.revenue,0),profit=selected.reduce((a,x)=>a+x.profit,0);
+ $('filterSummary').textContent=`${dashboardFilter==='all'?'전체':kinds[dashboardFilter]} ${selected.length}건 표시 · 실제 ${sales.filter(s=>s.kind==='real').length}건 / 테스트 ${sales.filter(s=>s.kind==='test').length}건 / 미분류 ${sales.filter(s=>s.kind==='unknown').length}건`;
  $('totalRevenue').textContent=currency(revenue);$('totalProfit').textContent=currency(profit);$('totalMargin').textContent=(revenue?profit/revenue*100:0).toFixed(1)+'%';$('count').textContent=sales.length+'건';$('salesCount').textContent=sales.length+'건';
  const grouped=group();$('productCount').textContent=grouped.length+'종';$('bestProduct').textContent=grouped[0]?.name||'없음';
- $('salesRows').innerHTML=sales.length?sales.map(s=>`<tr><td>${escapeHtml(s.name)}</td><td class="num">${s.qty}</td><td class="num">${currency(s.revenue)}</td><td class="num">${currency(s.profit)}</td><td><button class="del" data-id="${escapeHtml(s.id)}" aria-label="${escapeHtml(s.name)} 기록 삭제">삭제</button></td></tr>`).join(''):emptyRow(5);
+ $('salesRows').innerHTML=sales.length?sales.map(s=>`<tr><td>${escapeHtml(s.name)}</td><td class="num">${s.qty}</td><td class="num">${currency(s.revenue)}</td><td class="num">${currency(s.profit)}</td><td><select class="kind-select" data-kind-id="${escapeHtml(s.id)}" aria-label="${escapeHtml(s.name)} 기록 구분"><option value="unknown" ${s.kind==='unknown'?'selected':''}>미분류</option><option value="test" ${s.kind==='test'?'selected':''}>테스트</option><option value="real" ${s.kind==='real'?'selected':''}>실제</option></select></td><td><button class="del" data-id="${escapeHtml(s.id)}" aria-label="${escapeHtml(s.name)} 기록 삭제">삭제</button></td></tr>`).join(''):emptyRow(6);
  $('productRows').innerHTML=grouped.length?grouped.map(p=>`<tr><td>${escapeHtml(p.name)}</td><td class="num">${p.qty}</td><td class="num">${currency(p.revenue)}</td><td class="num">${currency(p.profit)}</td><td class="num">${(p.revenue?p.profit/p.revenue*100:0).toFixed(1)}%</td></tr>`).join(''):emptyRow(5);
- const recent=sales.slice(-3).reverse();$('recent').innerHTML=recent.length?recent.map(s=>`<div style="padding:12px 0;border-top:1px solid #edf1f8;display:flex;justify-content:space-between;gap:12px"><div><b>${escapeHtml(s.name)}</b><div class="muted">${s.qty}개 판매</div></div><b>${currency(s.revenue)}</b></div>`).join(''):'<p class="muted">판매 기록을 추가하면 여기에 나타납니다.</p>';
+ const recent=selected.slice(-3).reverse();$('recent').innerHTML=recent.length?recent.map(s=>`<div style="padding:12px 0;border-top:1px solid #edf1f8;display:flex;justify-content:space-between;gap:12px"><div><b>${escapeHtml(s.name)}</b><div class="muted">${s.qty}개 · ${kinds[s.kind]}</div></div><b>${currency(s.revenue)}</b></div>`).join(''):'<p class="muted">판매 기록을 추가하면 여기에 나타납니다.</p>';
  drawChart();
 }
-function drawChart(){const canvas=$('chart');const ctx=canvas.getContext('2d');if(!ctx)return;const rect=canvas.getBoundingClientRect();const w=Math.max(300,rect.width||600),h=270;canvas.width=Math.round(w*devicePixelRatio);canvas.height=Math.round(h*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,h);const L=65,R=18,T=20,B=42;const iw=w-L-R,ih=h-T-B;let rev=0,profit=0;const data=sales.map(s=>({r:rev+=s.revenue,p:profit+=s.profit}));const values=data.flatMap(x=>[x.r,x.p]);const min=Math.min(0,...values),max=Math.max(1,...values);ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#e8edf6';ctx.fillStyle='#71809a';for(let i=0;i<=4;i++){const y=T+ih*i/4;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();const v=max-(max-min)*i/4;ctx.fillText(Math.round(v).toLocaleString('ko-KR'),3,y+4)}if(!data.length){ctx.fillStyle='#99a5b7';ctx.textAlign='center';ctx.fillText('판매 기록을 추가하면 그래프가 표시됩니다.',w/2,h/2);ctx.textAlign='left';return;}const x=i=>L+(data.length===1?iw/2:iw*i/(data.length-1));const y=v=>T+ih-(v-min)/(max-min)*ih;for(const [k,color] of [['r','#6757e8'],['p','#0a9c80']]){ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.5;ctx.beginPath();data.forEach((d,i)=>i?ctx.lineTo(x(i),y(d[k])):ctx.moveTo(x(i),y(d[k])));ctx.stroke();for(let i=0;i<data.length;i++){ctx.beginPath();ctx.arc(x(i),y(data[i][k]),3.5,0,Math.PI*2);ctx.fill();}}ctx.fillStyle='#74839a';ctx.textAlign='center';ctx.fillText('판매 기록 순서 →',L+iw/2,h-8);ctx.textAlign='left';}
+function drawChart(){
+ const canvas=$('chart'),ctx=canvas.getContext('2d');if(!ctx)return;
+ const rect=canvas.getBoundingClientRect(),w=Math.max(300,rect.width||600),h=270;
+ const pixelRatio=window.devicePixelRatio||1;canvas.width=Math.round(w*pixelRatio);canvas.height=Math.round(h*pixelRatio);
+ ctx.setTransform(pixelRatio,0,0,pixelRatio,0,0);ctx.clearRect(0,0,w,h);
+ const selected=filteredSales(),L=68,R=18,T=22,B=48,iw=w-L-R,ih=h-T-B;
+ let rev=0,profit=0;
+ const data=selected.map(s=>({r:rev+=s.revenue,p:profit+=s.profit}));
+ $('chartHeading').textContent=data.length===1?'매출·이익 비교 (기록 1건)':'매출 성장 추이';
+ if(!data.length){ctx.font='13px system-ui';ctx.textAlign='center';ctx.fillStyle='#8590a5';ctx.fillText('선택한 구분에 판매 기록이 없습니다.',w/2,h/2);ctx.textAlign='left';return;}
+ const values=data.flatMap(x=>[x.r,x.p]);const min=Math.min(0,...values),max=Math.max(1,...values);
+ ctx.font='12px system-ui';ctx.strokeStyle='#e8edf6';ctx.fillStyle='#71809a';ctx.lineWidth=1;
+ for(let i=0;i<=4;i++){const yy=T+ih*i/4;ctx.beginPath();ctx.moveTo(L,yy);ctx.lineTo(w-R,yy);ctx.stroke();const val=max-(max-min)*i/4;ctx.fillText(Math.round(val).toLocaleString('ko-KR'),4,yy+4);}
+ const y=v=>T+ih-(v-min)/(max-min)*ih;
+ if(data.length===1){
+   // With one observation, display vertical bars instead of two isolated plot points.
+   const items=[{value:data[0].r,label:'매출',color:'#6757e8'},{value:data[0].p,label:'예상 이익',color:data[0].p<0?'#df6574':'#0a9c80'}];
+   const zero=y(0),barWidth=Math.min(75,iw*.22);
+   items.forEach((d,i)=>{const x=L+iw*(i===0?.33:.7),top=y(d.value);
+     ctx.fillStyle=d.color;ctx.fillRect(x-barWidth/2,Math.min(zero,top),barWidth,Math.max(2,Math.abs(top-zero)));
+     ctx.fillStyle='#4b5670';ctx.textAlign='center';ctx.fillText(d.label,x,h-16);
+     const amount=Math.round(d.value).toLocaleString('ko-KR')+'원';ctx.fillText(amount,x,Math.max(14,Math.min(h-54,top+(d.value<0?18:-9))));
+   });ctx.textAlign='left';return;
+ }
+ const x=i=>L+iw*i/(data.length-1);
+ for(const [k,color] of [['r','#6757e8'],['p','#0a9c80']]){ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.5;ctx.beginPath();data.forEach((d,i)=>i?ctx.lineTo(x(i),y(d[k])):ctx.moveTo(x(i),y(d[k])));ctx.stroke();for(let i=0;i<data.length;i++){ctx.beginPath();ctx.arc(x(i),y(data[i][k]),3.5,0,Math.PI*2);ctx.fill();}}
+ ctx.fillStyle='#74839a';ctx.textAlign='center';ctx.fillText('판매 기록 순서 →',L+iw/2,h-9);ctx.textAlign='left';
+}
 function download(name,text,mime){const blob=new Blob([text],{type:mime});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);}
 function backup(){
  try{
@@ -330,7 +371,9 @@ function backup(){
  }catch(err){setStatus('backupStatus','백업 실패: '+err.message,true);}
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));if(b.dataset.tab==='dashboard')drawChart();}));
-$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();const allowRepeat=$('allowDuplicateSale').checked;if(!allowRepeat&&lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const prev=sales[sales.length-1];if(!allowRepeat&&prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');const next=[...sales,normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint})];if(!store(next))return;sales=next;lastSubmission=fingerprint;lastSubmissionAt=now;$('allowDuplicateSale').checked=false;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
+$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();const allowRepeat=$('allowDuplicateSale').checked;if(!allowRepeat&&lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const prev=sales[sales.length-1];if(!allowRepeat&&prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');const next=[...sales,normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,kind:$('saleKind').value,created:new Date().toISOString(),fingerprint})];if(!store(next))return;sales=next;lastSubmission=fingerprint;lastSubmissionAt=now;$('allowDuplicateSale').checked=false;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
+$('dashboardFilter').addEventListener('change',e=>{dashboardFilter=e.target.value;render();});
+$('salesRows').addEventListener('change',e=>{const sel=e.target.closest('select[data-kind-id]');if(!sel)return;const item=sales.find(s=>s.id===sel.dataset.kindId);if(!item||!['real','test','unknown'].includes(sel.value))return;const next=sales.map(s=>s.id===item.id?{...s,kind:sel.value}:s);if(!store(next)){sel.value=item.kind;return;}sales=next;render();setStatus('saleStatus',`✅ ${item.name} 기록을 ${kinds[sel.value]}로 분류했습니다.`);});
 $('salesRows').addEventListener('click',e=>{const btn=e.target.closest('button[data-id]');if(!btn)return;const s=sales.find(x=>x.id===btn.dataset.id);if(!s)return;if(!confirm(`'${s.name}' 기록을 삭제할까요?\n삭제 전 JSON 백업 다운로드를 권장합니다.`))return;const next=sales.filter(x=>x.id!==btn.dataset.id);if(!store(next))return;sales=next;render();setStatus('saleStatus','선택한 기록을 삭제했습니다.');});
 $('exportJson').addEventListener('click',backup);
 $('exportCsv').addEventListener('click',()=>{
@@ -338,7 +381,7 @@ $('exportCsv').addEventListener('click',()=>{
  // Spreadsheet applications sometimes treat leading =, +, -, @ as formulas.
  // Only protect the user-entered product name; negative numeric profit stays numeric.
  const safeName=s=>{let x=String(s);if(/^\s*[=+\-@]/.test(x))x="'"+x;return x;};
- const lines=[['상품명','수량','매출','예상 이익'].map(esc).join(',')].concat(sales.map(s=>[safeName(s.name),s.qty,s.revenue,s.profit].map(esc).join(',')));
+ const lines=[['상품명','수량','매출','예상 이익','구분'].map(esc).join(',')].concat(sales.map(s=>[safeName(s.name),s.qty,s.revenue,s.profit,kinds[s.kind]].map(esc).join(',')));
  download('AutoBiz70_sales.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');
 });
 $('restoreJson').addEventListener('click',async()=>{
@@ -373,7 +416,7 @@ $('restoreJson').addEventListener('click',async()=>{
  }catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}
 });
 function splitCSV(line){const out=[];let field='',quoted=false;for(let i=0;i<line.length;i++){const c=line[i];if(c==='"'){if(quoted&&line[i+1]==='"'){field+='"';i++;}else quoted=!quoted;}else if(c===','&&!quoted){out.push(field);field='';}else field+=c;}out.push(field);return out;}
-$('loadCsv').addEventListener('click',async()=>{try{const f=$('importCsv').files[0];if(!f)throw Error('CSV 파일을 선택하세요.');if(f.size>2_000_000)throw Error('파일 크기가 너무 큽니다.');const lines=(await f.text()).replace(/^\ufeff/,'').trim().split(/\r?\n/);if(lines.length<2)throw Error('데이터가 없는 CSV입니다.');const heads=splitCSV(lines[0]).map(x=>x.trim().replace(/^\ufeff/,''));const find=arr=>arr.map(x=>heads.indexOf(x)).find(x=>x!==-1);const idx=[find(['상품명','상품 이름']),find(['수량','판매 수량']),find(['매출']),find(['예상 이익','예상이익'])];if(idx.some(x=>x===undefined))throw Error('필수 열(상품명/수량/매출/예상 이익)을 찾지 못했습니다.');const next=lines.slice(1).filter(Boolean).map(line=>{const cells=splitCSV(line);return normalize({name:cells[idx[0]],qty:Number(cells[idx[1]]),revenue:Number(cells[idx[2]]),profit:Number(cells[idx[3]])});});if(next.length>10000)throw Error('기록이 너무 많습니다.');if(!confirm(`CSV 기록 ${next.length}건을 추가할까요? 기존 기록과 중복될 수 있습니다.`))return;const combined=[...sales,...next];if(!store(combined))return;sales=combined;render();setStatus('backupStatus',`✅ CSV 기록 ${next.length}건을 추가했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
+$('loadCsv').addEventListener('click',async()=>{try{const f=$('importCsv').files[0];if(!f)throw Error('CSV 파일을 선택하세요.');if(f.size>2_000_000)throw Error('파일 크기가 너무 큽니다.');const lines=(await f.text()).replace(/^\ufeff/,'').trim().split(/\r?\n/);if(lines.length<2)throw Error('데이터가 없는 CSV입니다.');const heads=splitCSV(lines[0]).map(x=>x.trim().replace(/^\ufeff/,''));const find=arr=>arr.map(x=>heads.indexOf(x)).find(x=>x!==-1);const idx=[find(['상품명','상품 이름']),find(['수량','판매 수량']),find(['매출']),find(['예상 이익','예상이익'])];if(idx.some(x=>x===undefined))throw Error('필수 열(상품명/수량/매출/예상 이익)을 찾지 못했습니다.');const next=lines.slice(1).filter(Boolean).map(line=>{const cells=splitCSV(line);const typeCell=cells[heads.indexOf('구분')];const kind=({'실제':'real','테스트':'test','미분류':'unknown'})[typeCell]||'unknown';return normalize({name:cells[idx[0]],qty:Number(cells[idx[1]]),revenue:Number(cells[idx[2]]),profit:Number(cells[idx[3]]),kind});});if(next.length>10000)throw Error('기록이 너무 많습니다.');if(!confirm(`CSV 기록 ${next.length}건을 추가할까요? 기존 기록과 중복될 수 있습니다.`))return;const combined=[...sales,...next];if(!store(combined))return;sales=combined;render();setStatus('backupStatus',`✅ CSV 기록 ${next.length}건을 추가했습니다.`);}catch(e){setStatus('backupStatus','⚠️ '+e.message,true);}});
 load();render();window.addEventListener('resize',()=>{if($('dashboard').classList.contains('active'))drawChart();});
 })();
 </script>
