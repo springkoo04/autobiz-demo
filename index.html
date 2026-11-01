@@ -3,81 +3,245 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#10182c" />
-  <title>AutoBiz 6.6 | 자연스러운 콘텐츠 · 개인용 대시보드</title>
+  <meta name="theme-color" content="#151929" />
+  <title>AutoBiz 7.0 Beta — 새로운 워크스페이스</title>
   <style>
-    :root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#15223b;background:#f5f7fb;font-size:15px}
-    *{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
-    .shell{max-width:1100px;margin:auto;padding:24px 20px 75px}.top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px}.logo{display:flex;gap:12px;align-items:center}.mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#2563eb,#7452e8);display:grid;place-items:center;color:#fff;font-size:21px;font-weight:850}.brand{font-size:20px;font-weight:850;letter-spacing:-.5px}.sub{color:#65738a;font-size:13px;margin-top:3px}.pill{border-radius:99px;background:#e9f1ff;color:#2056bc;padding:8px 12px;font-size:12px;font-weight:750}
-    .hero{background:linear-gradient(125deg,#142445,#233b70);border-radius:23px;color:white;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 12px 35px #101c3820}.hero h1{font-size:25px;margin:0 0 9px}.hero p{margin:0;color:#d6e2fb;line-height:1.7;max-width:670px}.hero .symbol{font-size:54px;opacity:.65}
-    .notice{background:#fffaf0;border:1px solid #f1daa4;border-radius:13px;padding:12px 15px;margin:17px 0;color:#78591e;font-size:13px;line-height:1.6}
-    nav{display:flex;gap:9px;flex-wrap:wrap;margin:23px 0}.tab{border:1px solid #dce4f0;background:white;color:#455773;padding:12px 16px;border-radius:12px;font-weight:700}.tab.active{background:#2259d2;color:white;border-color:#2259d2}
-    .panel{display:none}.panel.active{display:block}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px}.section-title h2{font-size:20px;margin:0}.muted{color:#69778d;font-size:13px;line-height:1.55}.card{background:white;border:1px solid #e4e9f3;border-radius:18px;padding:23px;box-shadow:0 3px 15px #14213d08;margin-bottom:16px}.card h3{margin:0 0 17px;font-size:16px}.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.two{display:grid;grid-template-columns:1fr 1fr;gap:15px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:#fff;border:1px solid #e5eaf4;border-radius:17px;padding:19px}.stat .name{color:#71809a;font-size:13px;margin-bottom:10px}.stat .val{font-size:26px;font-weight:850;letter-spacing:-1px;overflow-wrap:anywhere}.stat .val.blue{color:#225ad2}.stat .val.green{color:#0a8a64}
-    label{display:block;color:#44536b;font-size:13px;font-weight:700;margin-bottom:7px}.field{margin-bottom:15px}input,textarea,select{width:100%;border:1px solid #d6dfed;border-radius:11px;padding:12px 13px;background:white;outline:none;min-width:0}input:focus,textarea:focus,select:focus{border-color:#4677ee;box-shadow:0 0 0 3px #4677ee20}textarea{resize:vertical;min-height:92px}.btn{border:0;border-radius:11px;padding:11px 16px;background:#245edb;color:white;font-weight:750}.btn:hover{filter:brightness(.97)}.btn.alt{background:#eaf1fd;color:#1e55b8}.btn.ghost{background:white;border:1px solid #d7e0ee;color:#415371}.btn.red{background:#fff1f2;color:#bc2946}.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px}.result{white-space:pre-wrap;line-height:1.75;background:#f6f8fd;border:1px solid #e3e9f5;border-radius:14px;padding:18px;min-height:130px;font-size:14px}.info{background:#edf5ff;color:#2355a1;border-radius:11px;padding:11px 13px;margin:12px 0;font-size:13px;line-height:1.6}.status{min-height:20px;margin-top:10px;font-size:13px;color:#366ba7}.status.err{color:#b52e4c}.tblwrap{overflow:auto}.tbl{width:100%;border-collapse:collapse;font-size:13px;min-width:570px}.tbl th{text-align:left;background:#f4f7fc;color:#64738b;padding:13px 10px}.tbl td{border-top:1px solid #e8edf6;padding:13px 10px}.tbl th.num,.tbl td.num{text-align:right;font-variant-numeric:tabular-nums}.tbl .del{border:0;background:#fff0f1;color:#b82640;border-radius:8px;padding:6px 10px}.empty{text-align:center;color:#8a97aa;padding:28px}.section-bottom{margin-top:19px}canvas{width:100%;height:270px;display:block}.hint{font-size:12px;color:#71829b;line-height:1.6}.badge{background:#e8f6f0;color:#117651;border-radius:7px;padding:3px 7px;font-size:11px;font-weight:800}.footer{text-align:center;color:#718098;font-size:12px;padding:20px}
-    .draft-card{margin:15px 0 19px}.draft-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}.btn.small{font-size:12px;padding:6px 10px}.draft-card .result{min-height:80px;padding:14px;font-size:13px}.draft-edit{display:block;width:100%;min-height:155px;line-height:1.8;resize:vertical;background:#f6f8fd;border:1px solid #e3e9f5;border-radius:14px;color:#15223b}.draft-edit:focus{background:#fff}.draft-card .draft-head b{font-size:14px}
-    .library-list{display:grid;gap:10px}.library-item{background:#f8faff;border:1px solid #e4eaf6;border-radius:12px;padding:15px;display:flex;justify-content:space-between;gap:15px;align-items:center}.library-item strong{display:block;overflow-wrap:anywhere}.library-item .muted{margin-top:5px;overflow-wrap:anywhere}.library-item .actions{margin-top:0;justify-content:flex-end}.library-item .actions .btn{white-space:nowrap}.small-note{font-size:12px;color:#64748b}.counter{font-variant-numeric:tabular-nums}.btn:focus-visible,.tab:focus-visible{outline:3px solid #6a95fa;outline-offset:2px}.field-inline{display:flex;gap:8px}.field-inline input{flex:1}.field-inline button{white-space:nowrap}@media(max-width:550px){.library-item{align-items:stretch;flex-direction:column}.library-item .actions{justify-content:flex-start}}
-    @media(max-width:730px){.shell{padding:16px 12px 54px}.hero{padding:22px}.hero .symbol{display:none}.hero h1{font-size:21px}.top .pill{display:none}.cols,.two,.three{grid-template-columns:1fr}.card{padding:17px}.stat .val{font-size:23px}.tab{font-size:13px;padding:11px 12px}}
-    /* 6.6: narrow screen usability and status visibility */
-    .backup-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0 0;padding:12px 16px;background:#eef4ff;border:1px solid #cfdffb;border-radius:14px}
-    .backup-strip.warning{background:#fff8e7;border-color:#ecd8a2}
-    .backup-strip .backup-text{flex:1;min-width:0;font-size:13px;line-height:1.55}
-    .backup-strip .backup-text strong{display:block;margin-bottom:2px}
-    .backup-strip .btn{flex:none}
-    #workStatus{font-size:12px;color:#446b93;min-height:19px;margin-top:6px}
-    .mobile-tips{padding:10px 13px;background:#edf4ff;border-radius:12px;color:#315a96;font-size:13px;line-height:1.5}
-    .backup-mini{font-size:12px;color:#687991;margin-top:7px}
-    @media(max-width:730px){
-      .shell{padding:12px 11px 48px}
-      .top{margin-bottom:16px}
-      .hero{border-radius:17px;padding:19px}
-      .notice{margin:12px 0}
-      nav{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;margin:15px -11px;padding:4px 11px 11px;gap:7px}
-      nav .tab{flex:none;white-space:nowrap;scroll-snap-align:start;min-height:44px}
-      .backup-strip{align-items:stretch;flex-direction:column;padding:12px}
-      .backup-strip .btn{width:100%;min-height:44px}
-      .actions .btn{min-height:44px}
-      input,textarea,select{font-size:16px}
-      .section-title{align-items:flex-start;flex-wrap:wrap}
-      .section-title h2{line-height:1.35}
-      .draft-card .draft-head .btn{min-height:38px}
-      .tblwrap{margin:0 -8px;padding:0 8px}
-    }
-    @media(max-width:400px){.brand{font-size:18px}.mark{width:39px;height:39px}.hero h1{font-size:19px}.card{padding:15px}.field-inline{flex-wrap:wrap}}
-  </style>
+
+/* AutoBiz 7.0 | Workspace Design Edition
+   Interface principles inspired by public UI patterns from Shopify, Linear and Toss.
+   All design and markup are original. No external fonts/assets required. */
+:root{
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --page:#f6f7fb; --surface:#fff; --ink:#171e32; --ink2:#39445d; --muted:#77829a;
+  --line:#e9edf4; --primary:#6757e8; --primary-d:#5643d4; --primary-soft:#f0edff;
+  --green:#088b72; --green-soft:#e9f8f3; --sidebar:#151929;
+  color:var(--ink); background:var(--page); font-size:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;min-width:320px}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #a399ff;outline-offset:2px}
+a{color:var(--primary)}
+.app-layout{display:grid;grid-template-columns:258px minmax(0,1fr);min-height:100vh;max-width:1850px;margin:0 auto}
+.side{background:var(--sidebar);color:white;min-height:100vh;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:28px 16px 19px;box-shadow:6px 0 24px #10192d09;z-index:2}
+.side-head{display:flex;align-items:center;gap:12px;padding:5px 11px 33px}
+.mark{width:42px;height:42px;border-radius:14px;background:linear-gradient(140deg,#a69aff,#6556e8 70%);display:grid;place-items:center;color:white;font-size:24px;font-weight:850;letter-spacing:-2px;box-shadow:0 6px 18px #6957e75a}
+.brand{font-size:20px;font-weight:850;letter-spacing:-.8px;line-height:1.1}
+.brand-light{display:block;margin-top:5px;color:#a6afc7;font-size:10px;letter-spacing:.6px;font-weight:750}
+.side-group{padding:0 12px;margin-bottom:11px;font-size:10px;font-weight:800;color:#77819c;letter-spacing:1.6px;text-transform:uppercase}
+.side nav{display:flex;flex-direction:column;gap:5px;margin:0;flex:0 0 auto}
+.tab{display:flex;align-items:center;gap:13px;width:100%;min-height:45px;padding:11px 14px;text-align:left;border:1px solid transparent;background:transparent;color:#a7b0c8;border-radius:11px;font-weight:650;white-space:nowrap;transition:background .16s,color .16s}
+.tab:hover{background:#272c42;color:#fff}
+.tab.active{color:#fff;background:#34304f;border-color:#494364;box-shadow:inset 3px 0 0 #9e92ff}
+.tab svg{width:19px;height:19px;flex:none;stroke-width:1.9;opacity:.9}
+.side-bottom{margin-top:auto;padding:12px 5px 0}
+.side-note{padding:16px 15px;border:1px solid #32384c;background:#20263a;border-radius:15px}
+.side-note .side-note-heading{display:flex;align-items:center;gap:8px;font-size:12px;color:#e4e8f8;font-weight:750;margin-bottom:6px}
+.side-note p{font-size:11px;color:#9ea9c2;line-height:1.65;margin:0}
+.side-version{margin:15px 12px 0;color:#737e99;font-size:11px}
+.main{min-width:0;min-height:100vh}
+.topbar{height:79px;background:#ffffffcf;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 clamp(22px,4vw,52px);backdrop-filter:blur(12px)}
+.topbar .crumb{color:var(--muted);font-size:12px;font-weight:650;margin-bottom:3px}
+.topbar .page-title{font-size:17px;font-weight:850;letter-spacing:-.55px}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar .local-chip{background:#eff8f4;color:#26755d;display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:99px;font-size:11px;font-weight:750;white-space:nowrap}
+.local-dot{display:inline-block;width:7px;height:7px;background:#20a37b;border-radius:100%;box-shadow:0 0 0 3px #cdefe3}
+.topbar .avatar{width:33px;height:33px;border-radius:11px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;font-size:12px;font-weight:850}
+.shell{max-width:1360px;margin:0 auto;padding:37px clamp(21px,4vw,52px) 58px}
+.welcome{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:24px}
+.welcome .eyebrow{color:var(--primary);font-weight:800;font-size:11px;letter-spacing:1.8px;margin:0 0 8px;text-transform:uppercase}
+.welcome h1{font-size:31px;letter-spacing:-1.25px;line-height:1.22;margin:0 0 8px;font-weight:860}
+.welcome p{color:var(--muted);line-height:1.65;margin:0;max-width:760px;font-size:13px}
+.headline-icon{width:76px;height:76px;border-radius:24px;background:linear-gradient(150deg,#ece8ff,#eaf7fd);display:grid;place-items:center;color:var(--primary);flex:none;position:relative;overflow:hidden}
+.headline-icon svg{width:38px;height:38px;stroke-width:1.55}
+.headline-icon:after{content:"";position:absolute;width:52px;height:52px;border-radius:50%;background:#ac9bfc26;right:-18px;top:-17px}
+.backup-strip{display:flex;align-items:center;gap:17px;justify-content:space-between;padding:15px 19px;border:1px solid #e5e7f1;background:#fff;border-radius:15px;margin:0 0 22px;box-shadow:0 2px 9px #17213a03}
+.backup-strip.warning{border-color:#f0dfb4;background:#fffcf5}
+.backup-strip .backup-icon{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;flex:none;color:var(--primary);background:var(--primary-soft)}
+.backup-strip .backup-icon svg{width:19px;height:19px}
+.backup-strip .backup-text{flex:1;min-width:0;font-size:12px;line-height:1.6;color:var(--muted)}
+.backup-strip .backup-text strong{display:block;color:var(--ink);font-size:13px;margin-bottom:1px}
+.backup-strip .btn{flex:none}
+.notice{border-radius:13px;border:1px solid #e7eaf2;background:#f9faff;color:#68748d;font-size:12px;line-height:1.8;margin:20px 0;overflow:hidden}
+.notice summary{list-style:none;cursor:pointer;padding:11px 16px;font-weight:700;color:#5c6880;display:flex;align-items:center;gap:8px}
+.notice summary::-webkit-details-marker{display:none}
+.notice summary:before{content:"ⓘ";font-weight:850;color:#7d71e6}
+.notice summary:after{content:"⌄";margin-left:auto;font-size:19px}
+.notice[open] summary:after{content:"⌃"}
+.notice .notice-detail{padding:0 16px 14px}
+.panel{display:none;animation:enter .2s ease}.panel.active{display:block}
+@keyframes enter{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 17px}
+.section-title h2{font-size:20px;letter-spacing:-.6px;font-weight:850;margin:0}
+.section-title .muted{font-size:12px}
+.muted{color:var(--muted);font-size:12px;line-height:1.75}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;margin-bottom:19px;box-shadow:0 5px 19px #22335707}
+.card h3{font-size:15px;letter-spacing:-.3px;margin:0 0 19px;font-weight:800}
+.stat{background:white;border:1px solid #ebedf4;border-radius:17px;padding:23px 24px;min-height:132px;box-shadow:0 4px 20px #1d244307;position:relative;overflow:hidden}
+.stat:before{position:absolute;right:19px;top:21px;width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:#f0edff;color:#7365e8;content:'↗';font-size:15px;font-weight:850}
+.stat:nth-child(2):before{content:'◉';color:#008e79;background:#e7f7f1}
+.stat:nth-child(3):before{content:'％';color:#d0873a;background:#fff2df}
+.stat .name{font-size:12px;font-weight:650;color:#78839b;margin-bottom:22px}
+.stat .val{font-size:27px;font-weight:850;letter-spacing:-1.2px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.stat .val.blue{color:#6454de}.stat .val.green{color:#049478}
+label{display:block;color:#4e5972;font-size:12px;font-weight:750;margin-bottom:8px}
+.field{margin-bottom:17px}
+input,textarea,select{width:100%;min-width:0;border-radius:10px;border:1px solid #dee4ee;background:#fff;padding:12px 13px;outline:0;color:#25314a;transition:border-color .18s,box-shadow .18s}
+input:hover,textarea:hover,select:hover{border-color:#bbc4d5}
+input:focus,textarea:focus,select:focus{border-color:#a497f5;box-shadow:0 0 0 3px #eeeaff}
+textarea{resize:vertical;min-height:92px}
+input::placeholder,textarea::placeholder{color:#9ba5b6}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid transparent;border-radius:10px;background:var(--primary);color:#fff;padding:11px 16px;font-size:12px;font-weight:780;min-height:40px;box-shadow:0 2px 5px #3e30a315;transition:background .15s,transform .15s,border-color .15s}
+.btn:hover:not(:disabled){background:var(--primary-d);transform:translateY(-1px)}
+.btn.alt{background:var(--primary-soft);color:#5445c8;box-shadow:none}.btn.alt:hover:not(:disabled){background:#e5dfff}
+.btn.ghost{background:#fff;color:#566078;border-color:#dfe4ee;box-shadow:none}.btn.ghost:hover:not(:disabled){background:#f7f8fc}
+.btn.red{background:#fff1f1;color:#c53e53;box-shadow:none}.btn.red:hover:not(:disabled){background:#ffe2e6}
+.btn.small{min-height:31px;padding:6px 11px;font-size:11px}
+.actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:8px}
+.info,.mobile-tips{background:#f4f2ff;color:#5b5593;border:1px solid #ebe7ff;border-radius:12px;padding:13px 15px;margin:13px 0;font-size:12px;line-height:1.7}
+.mobile-tips{margin-top:14px}
+.status{margin-top:10px;min-height:18px;font-size:12px;color:#3b8174;line-height:1.5}
+.status.err{color:#be4152}
+.hint{font-size:11px;color:#8590a5;line-height:1.7;margin:8px 0}
+.tblwrap{overflow:auto;border-radius:11px;border:1px solid #edf0f5}
+.tbl{border-collapse:collapse;font-size:12px;width:100%;min-width:550px}
+.tbl th{padding:15px 13px;text-align:left;background:#f8f9fc;color:#76839a;font-weight:700;white-space:nowrap}
+.tbl td{padding:14px 13px;border-top:1px solid #ecf0f6;color:#344059}
+.tbl tr:hover td{background:#fcfcff}
+.tbl th.num,.tbl td.num{text-align:right;font-variant-numeric:tabular-nums}
+.tbl .del{border:0;background:#fff0f1;color:#bd394c;border-radius:8px;padding:7px 11px;font-size:11px;font-weight:750}
+.empty{text-align:center;color:#8e98aa;padding:31px}
+.section-bottom{margin-top:20px}
+canvas{width:100%;height:270px;display:block}
+.badge{display:inline-flex;align-items:center;background:#f0edff;color:#6654d7;padding:4px 8px;font-size:11px;font-weight:750;border-radius:7px}
+.footer{text-align:center;margin-top:24px;color:#97a0b3;font-size:11px;line-height:1.7;padding:17px}
+.draft-card{margin:16px 0 22px}.draft-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.draft-head b{font-size:12px;letter-spacing:-.2px}
+.result,.draft-edit{width:100%;background:#fafbff;border:1px solid #e7eaf4;border-radius:12px;min-height:120px;padding:16px;line-height:1.8;font-size:12px;white-space:pre-wrap;resize:vertical;color:#33405a}
+.draft-edit:focus{background:#fff}
+.library-list{display:grid;gap:10px}
+.library-item{background:#fbfcff;border:1px solid #e9edf4;border-radius:12px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.library-item strong{overflow-wrap:anywhere;color:#29324a}
+.library-item .muted{overflow-wrap:anywhere;margin-top:4px}
+.library-item .actions{justify-content:flex-end;margin:0}
+.library-item .btn{white-space:nowrap}
+.small-note{font-size:11px;color:var(--muted)}
+.counter{font-variant-numeric:tabular-nums}
+.field-inline{display:flex;gap:8px}.field-inline input{flex:1}.field-inline button{white-space:nowrap}
+.check-line{display:flex;align-items:flex-start;gap:9px;line-height:1.65;font-weight:600}
+.check-line input[type=checkbox]{width:auto;margin-top:4px;accent-color:var(--primary);flex:none}
+#workStatus{font-size:11px;color:#8577ac;margin-top:7px;min-height:17px}
+.backup-mini{font-size:11px;color:#8792a5;margin-top:7px}
+.quicklinks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.quicklink{width:100%;border:1px solid #ebeaf4;box-shadow:0 4px 14px #1c234309;background:#fff;border-radius:15px;padding:17px 17px 15px;text-align:left;display:flex;align-items:center;gap:13px;color:var(--ink)}
+.quicklink:hover{border-color:#bab2f4;background:#fcfbff}
+.quicklink .quick-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);flex:none}
+.quicklink:nth-child(2) .quick-icon{background:#e8f8f3;color:#098d76}
+.quicklink:nth-child(3) .quick-icon{background:#fff3e4;color:#cb8b39}
+.quicklink svg{width:19px;height:19px;stroke-width:1.8}
+.quicklink strong{display:block;font-size:12px;margin-bottom:3px}.quicklink small{display:block;color:#909bb0;font-size:10px}
+.dashboard-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(290px,1fr);gap:18px}
+.dashboard-grid .card{margin-bottom:0;min-width:0}
+.dashboard-grid .card h3{margin-bottom:14px}
+.legend{display:flex;gap:15px;color:#7c879c;font-size:11px;margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend-dot{width:8px;height:8px;border-radius:50%;background:#6757e8}.legend-dot.profit{background:#0a9c80}
+@media(max-width:1180px){.app-layout{grid-template-columns:218px minmax(0,1fr)}.side{padding-inline:10px}.shell{padding:30px 25px 55px}.topbar{padding-inline:25px}.dashboard-grid{grid-template-columns:1fr}.three{gap:11px}.stat{padding:19px 15px}.stat .val{font-size:23px}}
+@media(max-width:920px){
+ .app-layout{display:block}.side{position:sticky;top:0;height:auto;min-height:0;padding:11px 14px 5px;box-shadow:0 5px 21px #161a291c;z-index:10}
+ .side-head{padding:0 4px 10px}.mark{width:32px;height:32px;border-radius:10px;font-size:18px}.brand{font-size:17px}.brand-light{display:none}
+ .side-group,.side-bottom{display:none}
+ .side nav{flex-direction:row;gap:5px;overflow-x:auto;padding-bottom:5px;scrollbar-width:thin;scrollbar-color:#47506b transparent}
+ .side .tab{width:auto;min-height:40px;padding:9px 11px;gap:7px;flex:none;font-size:12px;border-radius:9px}
+ .side .tab svg{width:16px;height:16px}.tab.active{box-shadow:inset 0 -3px 0 #b1a7ff}
+ .topbar{height:60px}.shell{padding:25px 21px 45px}.topbar .avatar{display:none}
+}
+@media(max-width:720px){
+ .topbar{height:57px;padding:0 16px}.topbar .page-title{font-size:15px}.topbar .local-chip{font-size:10px;padding:8px}
+ .shell{padding:23px 14px 40px}.welcome{align-items:center}.welcome h1{font-size:26px}.welcome p{font-size:12px}.headline-icon{width:52px;height:52px;border-radius:15px}.headline-icon svg{width:27px;height:27px}
+ .cols,.two,.three,.quicklinks,.dashboard-grid{grid-template-columns:1fr}
+ .three{gap:10px}.stat{min-height:106px;padding:17px 19px}.stat .name{margin-bottom:11px}.stat .val{font-size:24px}
+ .quicklinks{gap:10px}.quicklink{padding:13px 14px}.quicklink .quick-icon{width:34px;height:34px}
+ .card{padding:18px;border-radius:14px}.section-title{align-items:flex-start;flex-wrap:wrap}.section-title h2{font-size:19px}
+ .backup-strip{flex-wrap:wrap;gap:11px;padding:13px}.backup-strip .backup-text{min-width:150px}.backup-strip .btn{width:100%}
+ .library-item{align-items:stretch;flex-direction:column}.library-item .actions{justify-content:flex-start}
+ .actions .btn{min-height:42px}.draft-card .draft-head .btn{min-height:36px}
+ input,textarea,select{font-size:16px}
+ .field-inline{flex-wrap:wrap}
+ .tblwrap{margin:0 -4px}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+</style>
+<style>.btn svg{width:14px;height:14px;stroke-width:1.9;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}.side-note svg{width:15px;height:15px;stroke-width:1.8;fill:none;stroke:currentColor}.backup-icon svg,.headline-icon svg,.quick-icon svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}</style>
 </head>
 <body>
-<div class="shell">
-  <header class="top"><div class="logo"><div class="mark">A</div><div><div class="brand">AutoBiz <span style="color:#3a6de4">6.6</span></div><div class="sub">상품 · 콘텐츠 · 매출을 한곳에서</div></div></div><span class="pill">데이터: 브라우저에 저장</span></header>
-  <section class="hero"><div><h1>반복 업무를 더 간단하게.</h1><p>상품 정보를 저장하고 필요한 글을 만들고 보관하세요. 판매 기록도 한 화면에서 관리할 수 있습니다. AI는 문체 선택을 돕고, 게시글은 입력한 정보로만 구성합니다.</p></div><div class="symbol" aria-hidden="true">▤</div></section>
-  <div class="notice"><b>개인 테스트용 안내</b> — 상품·콘텐츠·판매 데이터는 이 브라우저에만 저장되며 다른 기기와 자동 동기화되지 않습니다. <b>AI 문체 추천은 WebGPU 지원 기기에서만 가능</b>하며 최초 모델 다운로드에 많은 데이터와 메모리가 필요할 수 있습니다. 게시용 문구는 AI 원문을 그대로 사용하지 않고 입력 정보와 정해진 문장으로 구성합니다. 입력한 사실 자체는 직접 검토하세요. 로그인·결제 기능은 없고, 실제 고객 정보는 입력하지 마세요.</div>
-  <section class="backup-strip" id="backupStrip" aria-live="polite">
-    <div class="backup-text"><strong id="backupHeadline">자동 저장 · 백업 확인</strong><span id="backupSummary">브라우저에 저장하는 중입니다.</span></div>
-    <button type="button" class="btn alt" id="quickBackup">📥 전체 백업 받기</button>
-  </section>
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs>
+<symbol id="i-dashboard" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></symbol>
+<symbol id="i-sales" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></symbol>
+<symbol id="i-magic" viewBox="0 0 24 24"><path d="m12 2 2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2L12 2ZM19 18l.65 1.35L21 20l-1.35.65L19 22l-.65-1.35L17 20l1.35-.65L19 18Z"/></symbol>
+<symbol id="i-archive" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M5 8v12h14V8M10 13h4"/></symbol>
+<symbol id="i-analytics" viewBox="0 0 24 24"><path d="M4 20V10m5 10V5m5 15v-7m5 7V8" stroke-linecap="round"/></symbol>
+<symbol id="i-backup" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v7c0 1.6 3.6 3 8 3s8-1.4 8-3V5M4 12v7c0 1.6 3.6 3 8 3s8-1.4 8-3v-7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1L12 3Z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4Z"/><path d="m9 12 2 2 4-4"/></symbol>
+</defs></svg>
+<div class="app-layout">
+<aside class="side">
+  <div class="side-head"><div class="mark">a.</div><div><div class="brand">AutoBiz</div><span class="brand-light">WORKSPACE · BETA</span></div></div>
+  <div class="side-group">WORKSPACE</div>
   <nav aria-label="기능 선택">
-    <button class="tab active" data-tab="dashboard">📊 대시보드</button><button class="tab" data-tab="sales">🧾 매출 관리</button><button class="tab" data-tab="content">🤖 콘텐츠 제작</button><button class="tab" data-tab="library">📦 상품·글 보관함</button><button class="tab" data-tab="analysis">📈 상품 분석</button><button class="tab" data-tab="backup">💾 백업/복원</button>
+    <button class="tab active" data-tab="dashboard"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-dashboard"/></svg><span>대시보드</span></button>
+    <button class="tab" data-tab="sales"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sales"/></svg><span>매출 관리</span></button>
+    <button class="tab" data-tab="content"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-magic"/></svg><span>AI 콘텐츠 제작</span></button>
+    <button class="tab" data-tab="library"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-archive"/></svg><span>상품·글 보관함</span></button>
+    <button class="tab" data-tab="analysis"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-analytics"/></svg><span>상품 분석</span></button>
+    <button class="tab" data-tab="backup"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-backup"/></svg><span>백업 및 복원</span></button>
   </nav>
+  <div class="side-bottom"><div class="side-note"><div class="side-note-heading"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg> 브라우저에 안전하게</div><p>데이터는 이 기기에만 저장돼요. 다른 기기에서 쓰려면 JSON 백업 파일이 필요해요.</p></div><div class="side-version">AutoBiz 7.0 Beta · Design Edition</div></div>
+</aside>
+<div class="main">
+  <header class="topbar"><div><div class="crumb">내 비즈니스 / <span id="navBreadcrumb">대시보드</span></div><div class="page-title" id="navPageTitle">대시보드</div></div><div class="topbar-right"><span class="local-chip"><span class="local-dot"></span>로컬 저장 중</span><span class="avatar" title="개인용 테스트 앱">AB</span></div></header>
+<div class="shell">
+  <div class="welcome"><div><div class="eyebrow">YOUR BUSINESS, SIMPLIFIED</div><h1>일을 더 가볍게, 관리는 더 똑똑하게.</h1><p>홍보 콘텐츠부터 매출까지. 지금 필요한 업무를 하나의 공간에서 관리하세요.</p></div><div class="headline-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-spark"/></svg></div></div>
+  <section class="backup-strip" id="backupStrip" aria-live="polite"><div class="backup-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-backup"/></svg></div><div class="backup-text"><strong id="backupHeadline">자동 저장 · 백업 확인</strong><span id="backupSummary">브라우저에 저장하는 중입니다.</span></div><button type="button" class="btn alt" id="quickBackup">전체 백업 받기 <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-arrow"/></svg></button></section>
   <section id="dashboard" class="panel active">
-    <div class="section-title"><h2>매출 대시보드</h2><span class="muted">이 브라우저의 기록 기준</span></div>
+    <div class="section-title"><h2>비즈니스 현황</h2><span class="muted">입력한 판매 기록 기준 · 세금·광고비 미포함</span></div>
     <div class="three"><div class="stat"><div class="name">총매출</div><div class="val blue" id="totalRevenue">0원</div></div><div class="stat"><div class="name">총 예상 이익</div><div class="val green" id="totalProfit">0원</div></div><div class="stat"><div class="name">전체 예상 이익률</div><div class="val" id="totalMargin">0.0%</div></div></div>
-    <div class="card section-bottom"><h3>판매 기록별 누적 변화</h3><canvas id="chart" role="img" aria-label="누적 매출 및 예상 이익 그래프"></canvas><div class="hint">파랑: 누적 매출 · 초록: 누적 예상 이익 · 기록 순서 기준</div></div>
-    <div class="card"><h3>최근 판매 기록</h3><div id="recent"></div></div>
+    <div class="section-title" style="margin:28px 0 14px"><h2 style="font-size:17px">빠른 작업</h2><span class="muted">자주 사용하는 기능으로 바로 이동</span></div>
+    <div class="quicklinks">
+      <button type="button" class="quicklink" data-go="content"><span class="quick-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-magic"/></svg></span><span><strong>홍보 글 만들기</strong><small>인스타·블로그·쇼츠</small></span></button>
+      <button type="button" class="quicklink" data-go="sales"><span class="quick-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-sales"/></svg></span><span><strong>판매 기록 추가</strong><small>매출과 이익 계산</small></span></button>
+      <button type="button" class="quicklink" data-go="library"><span class="quick-icon"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-archive"/></svg></span><span><strong>보관함 열기</strong><small>저장한 상품과 글 확인</small></span></button>
+    </div>
+    <div class="dashboard-grid">
+      <div class="card"><h3>매출 성장 추이</h3><canvas id="chart" role="img" aria-label="누적 매출 및 예상 이익 그래프"></canvas><div class="legend"><span><i class="legend-dot"></i>누적 매출</span><span><i class="legend-dot profit"></i>누적 예상 이익</span></div><div class="hint">판매 기록 순서에 따라 표시됩니다.</div></div>
+      <div class="card"><h3>최근 판매 기록</h3><div id="recent"></div></div>
+    </div>
   </section>
   <section id="sales" class="panel">
     <div class="section-title"><h2>판매 기록 관리</h2><span class="muted">가상 데이터로 테스트해 보세요</span></div>
-    <div class="cols"><div class="card"><h3>새 판매 기록</h3><form id="saleForm"><div class="field"><label for="saleName">상품 이름</label><input id="saleName" required maxlength="90" value="무선 미니 선풍기" /></div><div class="two"><div class="field"><label for="salePrice">판매가 (원)</label><input id="salePrice" type="number" min="0" step="1" value="15000" required /></div><div class="field"><label for="saleCost">원가 (원)</label><input id="saleCost" type="number" min="0" step="1" value="9000" required /></div><div class="field"><label for="saleQty">수량</label><input id="saleQty" type="number" min="1" step="1" value="5" required /></div><div class="field"><label for="saleShip">건당 배송비 (원)</label><input id="saleShip" type="number" min="0" step="1" value="0" required /></div><div class="field"><label for="saleFee">수수료 (%)</label><input id="saleFee" type="number" min="0" max="100" step="0.1" value="0" required /></div></div><button type="submit" class="btn">판매 기록 추가</button><div class="status" id="saleStatus" role="status"></div></form></div>
-      <div class="card"><h3>계산 방식</h3><p class="muted">매출 = 판매가 × 수량</p><p class="muted">예상 이익 = 매출 − (원가 × 수량) − (배송비 × 수량) − 판매 수수료</p><div class="info">세금, 광고비, 포장비, 환불 등 추가 비용은 포함되지 않습니다. 실제 회계용 장부가 아닌 실험용 계산기입니다.</div><p class="muted">같은 입력값을 2분 이내 연속 제출하면 중복으로 기록되지 않도록 합니다.</p></div></div>
+    <div class="cols"><div class="card"><h3>새 판매 기록</h3><form id="saleForm"><div class="field"><label for="saleName">상품 이름</label><input id="saleName" required maxlength="90" value="무선 미니 선풍기" /></div><div class="two"><div class="field"><label for="salePrice">판매가 (원)</label><input id="salePrice" type="number" min="0" step="1" value="15000" required /></div><div class="field"><label for="saleCost">원가 (원)</label><input id="saleCost" type="number" min="0" step="1" value="9000" required /></div><div class="field"><label for="saleQty">수량</label><input id="saleQty" type="number" min="1" step="1" value="5" required /></div><div class="field"><label for="saleShip">건당 배송비 (원)</label><input id="saleShip" type="number" min="0" step="1" value="0" required /></div><div class="field"><label for="saleFee">수수료 (%)</label><input id="saleFee" type="number" min="0" max="100" step="0.1" value="0" required /></div></div><div class="field"><label class="check-line"><input type="checkbox" id="allowDuplicateSale" /> 실제 별도 주문으로 확인했으므로 동일 판매 기록 추가 허용</label></div><button type="submit" class="btn">판매 기록 추가</button><div class="status" id="saleStatus" role="status"></div></form></div>
+      <div class="card"><h3>계산 방식</h3><p class="muted">매출 = 판매가 × 수량</p><p class="muted">예상 이익 = 매출 − (원가 × 수량) − (배송비 × 수량) − 판매 수수료</p><div class="info">세금, 광고비, 포장비, 환불, 광고·협찬 비용 등 추가 비용은 포함되지 않습니다. 실제 회계용 장부가 아닌 실험용 계산기입니다.</div><p class="muted">같은 내용의 기록을 2분 안에 반복 입력하면 실수로 판단해 차단합니다. 실제로 별도 주문이라면 아래 체크박스를 선택해 추가할 수 있습니다.</p></div></div>
     <div class="card"><h3>판매 내역 <span id="count" class="badge">0건</span></h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th>관리</th></tr></thead><tbody id="salesRows"></tbody></table></div></div>
   </section>
   <section id="content" class="panel">
-    <div class="section-title"><h2>상품 콘텐츠 제작</h2><span class="badge">입력 정보 기반 · 자연스러운 문장 · 검토용 초안</span></div>
+    <div class="section-title"><h2>상품·서비스 콘텐츠 제작</h2><span class="badge">입력 정보 기반 · 자연스러운 문장 · 검토용 초안</span></div>
     <div class="cols">
-      <div class="card"><h3>상품 정보 입력</h3>
+      <div class="card"><h3>소개할 대상 정보 입력</h3>
         <div class="info" style="margin-top:0"><b>📦 저장한 상품 빠르게 불러오기</b><div class="actions" style="align-items:center"><select id="savedProductSelect" aria-label="저장된 상품" style="flex:1;min-width:170px"><option value="">저장된 상품 선택</option></select><button class="btn alt" id="loadSelectedProduct" type="button">불러오기</button></div><p class="hint" id="selectedProductInfo">상품을 저장하면 다음부터 정보를 다시 입력하지 않아도 됩니다.</p></div>
-        <div class="field"><label for="cName">상품명</label><input id="cName" value="무선 미니 선풍기" maxlength="90" /></div>
-        <div class="field"><label for="cFeature">직접 확인한 상품 특징</label><textarea id="cFeature" maxlength="600">가볍고 휴대하기 편리함</textarea><p class="hint">출시일, 성능, 후기, 수상 경력 등은 직접 확인한 경우에만 입력하세요.</p></div>
+        <div class="field"><label for="cKind">소개 유형</label><select id="cKind"><option value="product">상품</option><option value="service">서비스·수업</option><option value="event">행사·모임</option><option value="info">안내·캠페인</option></select><p class="hint">상품 판매가 아닌 직무는 유형을 바꾸면 구매 유도 문구 대신 업무에 맞는 초안을 만듭니다.</p></div>
+        <div class="field"><label for="cName">상품·서비스·행사 이름</label><input id="cName" value="무선 미니 선풍기" maxlength="90" /></div>
+        <div class="field"><label for="cFeature">직접 확인한 내용·특징</label><textarea id="cFeature" maxlength="600">가볍고 휴대하기 편리함</textarea><p class="hint">출시일, 성능, 후기, 행사 일정, 서비스 범위 등은 직접 확인한 경우에만 입력하세요.</p></div>
         <div class="field"><label for="cTarget">소개 대상 (선택)</label><input id="cTarget" value="학생" maxlength="90" /></div>
-        <div class="field"><label for="cPrice">표시할 가격 (원)</label><input id="cPrice" type="number" min="0" step="1" value="15000" /></div>
+        <div class="field"><label for="cPrice">가격·참여비 (원)</label><input id="cPrice" type="number" min="0" step="1" value="15000" /></div>
+        <div class="field"><label for="cDisclosure">광고·협찬 관계 (직접 확인 후 선택)</label><select id="cDisclosure"><option value="review">확인 전 / 일반 초안</option><option value="paid">유료 광고·협찬</option><option value="gifted">제품·서비스 제공받음</option><option value="none">광고·협찬 관계 없음</option></select><p class="hint" id="disclosureTip">광고·협찬 관계가 있다면 사실에 맞는 표시를 선택하세요. 법적 표시 요건을 모두 충족하는지 게시 전 확인해야 합니다.</p></div>
         <div class="field"><label for="cTone">문체</label><select id="cTone"><option value="friendly">친근하게</option><option value="informative">정보 중심으로</option><option value="short">간결하게</option></select></div>
         <div class="actions"><button type="button" class="btn alt" id="saveProduct">💾 이 상품 저장</button><button type="button" class="btn ghost" id="newProduct">새 상품 입력</button></div>
         <div class="mobile-tips">✍️ 입력 중인 작업은 이 브라우저에 임시 저장됩니다. 다시 접속하면 이어서 편집할 수 있어요.</div>
@@ -85,8 +249,8 @@
         <div class="actions"><button type="button" class="btn ghost small" id="clearWorkspace">작업 중인 입력 초기화</button></div>
         <div class="status" id="productStatus" role="status"></div>
         <div class="actions"><button type="button" class="btn" id="generateContent">초안 3개 만들기</button><button type="button" class="btn alt" id="regenerateContent">다른 표현으로 다시 만들기</button></div>
-        <p class="hint">같은 정보라도 문체와 표현을 바꿔 볼 수 있어요. 새로운 상품 사실을 만들어 넣지는 않습니다.</p>
-        <div class="info" style="margin-top:18px"><b>선택 기능 — 기기 내 AI 문체 추천</b><p style="margin:6px 0">브라우저 AI는 문체만 선택합니다. AI 원문을 게시글에 직접 넣지 않으므로 임의의 출시일, 성능, 판매 실적이 추가되지 않도록 설계했어요. 상품 정보 자체는 직접 확인해 주세요.</p></div>
+        <p class="hint">같은 정보라도 문체와 표현을 바꿔 볼 수 있어요. 새로운 상품 사실을 만들어 넣지는 않습니다. 수정한 초안은 다시 만들기 전에 확인을 요청합니다.</p>
+        <div class="info" style="margin-top:18px"><b>선택 기능 — 기기 내 AI 문체 추천</b><p style="margin:6px 0">브라우저 AI는 문체만 선택합니다. AI 원문을 게시글에 직접 넣지 않으므로 임의의 출시일, 성능, 판매 실적이 추가되지 않도록 설계했어요. 입력한 내용 자체는 직접 확인해 주세요.</p></div>
         <div class="actions"><button class="btn alt" id="loadLocalAI" type="button">1. 로컬 AI 모델 불러오기</button><button class="btn" id="generateLocalAI" type="button" disabled>2. AI 문체 추천 + 안전한 글 생성</button></div>
         <div class="status" id="aiStatus" role="status" aria-live="polite">AI 준비 전 · WebGPU를 지원하는 최신 브라우저 권장</div>
         <div class="status" id="contentStatus" role="status" aria-live="polite"></div>
@@ -98,7 +262,7 @@
         <div class="draft-card"><div class="draft-head"><b>🎬 30초 쇼츠 대본</b><button type="button" class="btn ghost small" data-copy="shorts">복사</button></div><textarea class="result draft-edit" id="draftShorts" aria-label="쇼츠 초안 편집" spellcheck="true" placeholder="초안을 생성하면 여기에 표시됩니다."></textarea></div>
         <div class="actions"><button type="button" class="btn" id="archiveContent">📚 이 글 3개 보관함에 저장</button></div>
         <div class="actions"><button type="button" class="btn alt" id="copyContent">전체 복사</button><button type="button" class="btn ghost" id="saveContent">TXT 다운로드</button></div>
-        <p class="hint">현재 입력한 상품 정보로 만든 초안이며, 실제 제품 정보를 검증하거나 광고 효과를 보장하는 기능은 아닙니다. 광고·협찬 표시가 필요한 경우 관련 규정에 따라 따로 표기하세요.</p>
+        <p class="hint">현재 입력한 정보로 만든 초안이며, 실제 제품 정보를 검증하거나 광고 효과를 보장하는 기능은 아닙니다. 광고·협찬 표시가 필요한 경우 관련 규정에 따라 따로 표기하세요.</p>
       </div>
     </div>
   </section>
@@ -119,8 +283,9 @@
     <div class="info">보관함의 자료는 <b>브라우저 저장 공간(localStorage)</b>에만 저장됩니다. 브라우저 데이터 삭제 시 없어질 수 있으니 <b>백업/복원 → 전체 JSON 백업</b>을 이용하세요.</div>
   </section>
   <section id="analysis" class="panel"><div class="section-title"><h2>상품별 분석</h2><span class="muted">정확한 계산 기반</span></div><div class="three"><div class="stat"><div class="name">상품 종류</div><div class="val" id="productCount">0종</div></div><div class="stat"><div class="name">매출 1위 상품</div><div class="val" id="bestProduct" style="font-size:18px">없음</div></div><div class="stat"><div class="name">판매 기록</div><div class="val" id="salesCount">0건</div></div></div><div class="card section-bottom"><h3>상품별 매출과 이익</h3><div class="tblwrap"><table class="tbl"><thead><tr><th>상품</th><th class="num">수량</th><th class="num">매출</th><th class="num">예상 이익</th><th class="num">이익률</th></tr></thead><tbody id="productRows"></tbody></table></div></div><div class="info">이 분석은 파이썬이나 AI 추측이 아니라 브라우저에서 정확한 산술 계산으로 만듭니다. 실제 경영 의사결정에 사용하기 전에 별도 검증이 필요합니다.</div></section>
-  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><div class="info" id="backupAdvice">입력 데이터는 브라우저에 자동 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지울 때를 대비해 JSON 파일을 별도로 내려받으세요.</div><p class="muted">상품·콘텐츠·판매 기록을 하나의 JSON 파일로 백업하거나 판매 기록만 CSV로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">전체 JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">6.5~6.6 전체 JSON 백업을 복원하면 이 브라우저의 상품·콘텐츠·판매 기록이 모두 교체됩니다. 이전 6.4 이하 JSON 백업(판매 기록만 포함)은 판매 기록만 교체하며 보관함은 유지합니다. 먼저 새 백업을 받아 두세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 백업 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
-  <footer class="footer">AutoBiz 6.6 · 개인 학습용 시제품 · 상품·콘텐츠·매출 정보는 이 브라우저에만 저장됩니다.</footer>
+  <section id="backup" class="panel"><div class="section-title"><h2>데이터 백업 및 복원</h2><span class="muted">기기 간 이동은 파일로</span></div><div class="card"><h3>파일 내려받기</h3><div class="info" id="backupAdvice">입력 데이터는 브라우저에 자동 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지울 때를 대비해 JSON 파일을 별도로 내려받으세요.</div><p class="muted">상품·콘텐츠·판매 기록을 하나의 JSON 파일로 백업하거나 판매 기록만 CSV로 내보낼 수 있어요.</p><div class="actions"><button class="btn" id="exportJson">전체 JSON 백업 다운로드</button><button class="btn alt" id="exportCsv">CSV 다운로드</button></div></div><div class="card"><h3>백업 복원하기</h3><p class="muted">6.5~7.0 Beta 전체 JSON 백업을 복원하면 이 브라우저의 상품·콘텐츠·판매 기록이 모두 교체됩니다. 이전 6.4 이하 JSON 백업(판매 기록만 포함)은 판매 기록만 교체하며 보관함은 유지합니다. 먼저 새 백업을 받아 두세요.</p><input type="file" id="importJson" accept="application/json,.json" /><div class="actions"><button class="btn red" id="restoreJson">JSON 백업 복원</button></div><div class="status" id="backupStatus" role="status"></div></div><div class="card"><h3>기존 AutoBiz CSV 불러오기</h3><p class="muted">이전 Colab 버전에서 다운로드한 CSV 중 <b>상품명, 수량, 매출, 예상 이익</b> 형식의 파일을 가져올 수 있습니다. 새로 가져온 기록은 기존 기록 뒤에 추가됩니다.</p><input type="file" id="importCsv" accept="text/csv,.csv" /><div class="actions"><button class="btn alt" id="loadCsv">CSV 기록 가져오기</button></div><p class="hint">CSV는 단순 형식의 파일만 지원합니다. 복잡한 따옴표·줄바꿈 데이터는 JSON 백업을 권장합니다.</p></div></section>
+  <details class="notice"><summary>테스트 버전 이용 안내 · 저장 방식 및 AI 기능</summary><div class="notice-detail">상품·콘텐츠·판매 데이터는 이 브라우저에만 저장되며 다른 기기와 자동 동기화되지 않습니다. AI 문체 추천은 WebGPU 지원 기기에서만 가능하며 최초 모델 다운로드에 많은 데이터와 메모리가 필요할 수 있습니다. 게시용 문구는 AI 원문을 그대로 사용하지 않고 입력 정보와 정해진 문장으로 구성합니다. 입력한 사실 자체는 직접 검토하세요. 로그인·결제 기능은 없고 실제 고객 정보는 입력하지 마세요. AutoBiz 7.0 Beta는 32개 직업·업무 유형의 가상 데이터를 이용한 기능 검증용이며 실제 사용자 검증을 대체하지 않습니다.</div></details>
+  <footer class="footer">AutoBiz 7.0 Beta · Design Edition · 개인 학습용 시제품 · 상품·콘텐츠·매출 정보는 이 브라우저에만 저장됩니다.</footer>
 </div>
 <script>
 (() => {
@@ -153,7 +318,7 @@ function render(){
  const recent=sales.slice(-3).reverse();$('recent').innerHTML=recent.length?recent.map(s=>`<div style="padding:12px 0;border-top:1px solid #edf1f8;display:flex;justify-content:space-between;gap:12px"><div><b>${escapeHtml(s.name)}</b><div class="muted">${s.qty}개 판매</div></div><b>${currency(s.revenue)}</b></div>`).join(''):'<p class="muted">판매 기록을 추가하면 여기에 나타납니다.</p>';
  drawChart();
 }
-function drawChart(){const canvas=$('chart');const ctx=canvas.getContext('2d');if(!ctx)return;const rect=canvas.getBoundingClientRect();const w=Math.max(300,rect.width||600),h=270;canvas.width=Math.round(w*devicePixelRatio);canvas.height=Math.round(h*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,h);const L=65,R=18,T=20,B=42;const iw=w-L-R,ih=h-T-B;let rev=0,profit=0;const data=sales.map(s=>({r:rev+=s.revenue,p:profit+=s.profit}));const values=data.flatMap(x=>[x.r,x.p]);const min=Math.min(0,...values),max=Math.max(1,...values);ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#e8edf6';ctx.fillStyle='#71809a';for(let i=0;i<=4;i++){const y=T+ih*i/4;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();const v=max-(max-min)*i/4;ctx.fillText(Math.round(v).toLocaleString('ko-KR'),3,y+4)}if(!data.length){ctx.fillStyle='#99a5b7';ctx.textAlign='center';ctx.fillText('판매 기록을 추가하면 그래프가 표시됩니다.',w/2,h/2);ctx.textAlign='left';return;}const x=i=>L+(data.length===1?iw/2:iw*i/(data.length-1));const y=v=>T+ih-(v-min)/(max-min)*ih;for(const [k,color] of [['r','#2c67e4'],['p','#0c956b']]){ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.5;ctx.beginPath();data.forEach((d,i)=>i?ctx.lineTo(x(i),y(d[k])):ctx.moveTo(x(i),y(d[k])));ctx.stroke();for(let i=0;i<data.length;i++){ctx.beginPath();ctx.arc(x(i),y(data[i][k]),3.5,0,Math.PI*2);ctx.fill();}}ctx.fillStyle='#74839a';ctx.textAlign='center';ctx.fillText('판매 기록 순서 →',L+iw/2,h-8);ctx.textAlign='left';}
+function drawChart(){const canvas=$('chart');const ctx=canvas.getContext('2d');if(!ctx)return;const rect=canvas.getBoundingClientRect();const w=Math.max(300,rect.width||600),h=270;canvas.width=Math.round(w*devicePixelRatio);canvas.height=Math.round(h*devicePixelRatio);ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);ctx.clearRect(0,0,w,h);const L=65,R=18,T=20,B=42;const iw=w-L-R,ih=h-T-B;let rev=0,profit=0;const data=sales.map(s=>({r:rev+=s.revenue,p:profit+=s.profit}));const values=data.flatMap(x=>[x.r,x.p]);const min=Math.min(0,...values),max=Math.max(1,...values);ctx.font='12px system-ui';ctx.lineWidth=1;ctx.strokeStyle='#e8edf6';ctx.fillStyle='#71809a';for(let i=0;i<=4;i++){const y=T+ih*i/4;ctx.beginPath();ctx.moveTo(L,y);ctx.lineTo(w-R,y);ctx.stroke();const v=max-(max-min)*i/4;ctx.fillText(Math.round(v).toLocaleString('ko-KR'),3,y+4)}if(!data.length){ctx.fillStyle='#99a5b7';ctx.textAlign='center';ctx.fillText('판매 기록을 추가하면 그래프가 표시됩니다.',w/2,h/2);ctx.textAlign='left';return;}const x=i=>L+(data.length===1?iw/2:iw*i/(data.length-1));const y=v=>T+ih-(v-min)/(max-min)*ih;for(const [k,color] of [['r','#6757e8'],['p','#0a9c80']]){ctx.strokeStyle=color;ctx.fillStyle=color;ctx.lineWidth=2.5;ctx.beginPath();data.forEach((d,i)=>i?ctx.lineTo(x(i),y(d[k])):ctx.moveTo(x(i),y(d[k])));ctx.stroke();for(let i=0;i<data.length;i++){ctx.beginPath();ctx.arc(x(i),y(data[i][k]),3.5,0,Math.PI*2);ctx.fill();}}ctx.fillStyle='#74839a';ctx.textAlign='center';ctx.fillText('판매 기록 순서 →',L+iw/2,h-8);ctx.textAlign='left';}
 function download(name,text,mime){const blob=new Blob([text],{type:mime});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);}
 function backup(){
  try{
@@ -165,10 +330,17 @@ function backup(){
  }catch(err){setStatus('backupStatus','백업 실패: '+err.message,true);}
 }
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===b.dataset.tab));if(b.dataset.tab==='dashboard')drawChart();}));
-$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();if(lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다.');const prev=sales[sales.length-1];if(prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');const next=[...sales,normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint})];if(!store(next))return;sales=next;lastSubmission=fingerprint;lastSubmissionAt=now;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
+$('saleForm').addEventListener('submit',e=>{e.preventDefault();try{const name=$('saleName').value.trim(),price=+$('salePrice').value,cost=+$('saleCost').value,qty=+$('saleQty').value,ship=+$('saleShip').value,fee=+$('saleFee').value;if(!name||name.length>90||![price,cost,qty,ship,fee].every(Number.isFinite)||[price,cost,qty,ship,fee].some(x=>x<0)||!Number.isInteger(qty)||qty<1||fee>100)throw Error('입력값을 확인해 주세요.');const fingerprint=JSON.stringify([name,price,cost,qty,ship,fee]);const now=Date.now();const allowRepeat=$('allowDuplicateSale').checked;if(!allowRepeat&&lastSubmission===fingerprint&&now-lastSubmissionAt<120000)throw Error('같은 기록의 연속 입력을 막았습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const prev=sales[sales.length-1];if(!allowRepeat&&prev?.fingerprint===fingerprint&&now-Date.parse(prev.created)<120000)throw Error('최근에 같은 기록이 이미 저장되었습니다. 별도 주문이라면 체크박스를 선택해 주세요.');const revenue=price*qty,profit=revenue-cost*qty-ship*qty-revenue*fee/100;if(![revenue,profit].every(Number.isFinite)||Math.abs(revenue)>1e14||Math.abs(profit)>1e14)throw Error('금액이 너무 큽니다.');const next=[...sales,normalize({name,qty,revenue:Math.round(revenue*100)/100,profit:Math.round(profit*100)/100,created:new Date().toISOString(),fingerprint})];if(!store(next))return;sales=next;lastSubmission=fingerprint;lastSubmissionAt=now;$('allowDuplicateSale').checked=false;render();setStatus('saleStatus','✅ 기록이 추가됐습니다. 매출 '+currency(revenue)+' / 예상 이익 '+currency(profit));}catch(err){setStatus('saleStatus','⚠️ '+err.message,true);}});
 $('salesRows').addEventListener('click',e=>{const btn=e.target.closest('button[data-id]');if(!btn)return;const s=sales.find(x=>x.id===btn.dataset.id);if(!s)return;if(!confirm(`'${s.name}' 기록을 삭제할까요?\n삭제 전 JSON 백업 다운로드를 권장합니다.`))return;const next=sales.filter(x=>x.id!==btn.dataset.id);if(!store(next))return;sales=next;render();setStatus('saleStatus','선택한 기록을 삭제했습니다.');});
 $('exportJson').addEventListener('click',backup);
-$('exportCsv').addEventListener('click',()=>{const esc=s=>'"'+String(s).replaceAll('"','""')+'"';const lines=[['상품명','수량','매출','예상 이익'].map(esc).join(',')].concat(sales.map(s=>[s.name,s.qty,s.revenue,s.profit].map(esc).join(',')));download('AutoBiz6_sales.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');});
+$('exportCsv').addEventListener('click',()=>{
+ const esc=s=>'"'+String(s).replaceAll('"','""')+'"';
+ // Spreadsheet applications sometimes treat leading =, +, -, @ as formulas.
+ // Only protect the user-entered product name; negative numeric profit stays numeric.
+ const safeName=s=>{let x=String(s);if(/^\s*[=+\-@]/.test(x))x="'"+x;return x;};
+ const lines=[['상품명','수량','매출','예상 이익'].map(esc).join(',')].concat(sales.map(s=>[safeName(s.name),s.qty,s.revenue,s.profit].map(esc).join(',')));
+ download('AutoBiz70_sales.csv','\ufeff'+lines.join('\r\n'),'text/csv;charset=utf-8');
+});
 $('restoreJson').addEventListener('click',async()=>{
  try{
   const f=$('importJson').files[0];if(!f)throw Error('JSON 백업 파일을 선택하세요.');
@@ -178,7 +350,7 @@ $('restoreJson').addEventListener('click',async()=>{
   const nextSales=parsed.records.map(normalize);
   let products=null,drafts=null;
   if(parsed.version===2){
-    if(!Array.isArray(parsed.products)||!Array.isArray(parsed.drafts))throw Error('6.5 전체 백업 형식이 올바르지 않습니다.');
+    if(!Array.isArray(parsed.products)||!Array.isArray(parsed.drafts))throw Error('전체 백업 형식이 올바르지 않습니다.');
     if(!window.AutoBiz65?.validateBackup)throw Error('보관함 초기화가 끝나지 않았습니다. 페이지를 새로고침하세요.');
     ({products,drafts}=window.AutoBiz65.validateBackup(parsed.products,parsed.drafts));
   }
@@ -223,18 +395,40 @@ const money = n => Number(n).toLocaleString('ko-KR')+'원';
 const clean = v => String(v??'').trim().replace(/[\u0000-\u001f]+/g,' ').replace(/\s+/g,' ');
 function getInput(){
   const name=clean(byId('cName').value),feature=clean(byId('cFeature').value),target=clean(byId('cTarget').value);
-  const raw=byId('cPrice').value,price=Number(raw);
+  const raw=byId('cPrice').value,price=Number(raw),kind=byId('cKind').value;
   if (!name || !feature || raw==='' || !Number.isFinite(price) || price<0 || !Number.isInteger(price)) throw Error('상품명·특징·0 이상의 정수 가격을 입력하세요.');
   if(name.length>90 || feature.length>600 || target.length>90) throw Error('입력 글자 수를 확인하세요.');
-  return {name,feature,target,price};
+  return {name,feature,target,price,kind};
 }
 // All marketing factual claims below derive only from fields entered by the user.
 // These are prose templates, NOT factual assertions from the language model.
 let draftVersion = 0;
 let hasDraft = false;
+let editedDraft = false;
+function addDisclosure(d){
+ const value=byId('cDisclosure').value;
+ const labels={paid:'[광고] 유료 광고·협찬 콘텐츠',gifted:'[제품/서비스 제공] 제공받은 제품 또는 서비스 소개'};
+ const label=labels[value];
+ return label?{instagram:label+'\n'+d.instagram,blog:label+'\n\n'+d.blog,shorts:'[영상 시작 전 광고 표시] '+label+'\n'+d.shorts}:d;
+}
 function buildDrafts(info,tone,version=0){
-  const {name,feature,target,price}=info;
+  const {name,feature,target,price,kind='product'}=info;
   const v=((version%3)+3)%3;
+  if(kind!=='product'){
+    // Short, neutral templates for non-retail work. Never invent a booking URL, time, result, or availability.
+    const label={service:'서비스·수업',event:'행사·모임',info:'안내·캠페인'}[kind]||'안내';
+    const itemLabel={service:'서비스 범위',event:'행사 내용',info:'확인된 안내 내용'}[kind]||'확인된 내용';
+    const priceText=price===0?'가격·참여비: 0원 입력됨 (실제 무료 여부 확인 필요)':`가격·참여비: ${money(price)}`;
+    const targetText=target?`대상: ${target}`:'';
+    const endings={service:['예약·진행 조건은 직접 확인해 주세요.','신청·이용 조건을 확인해 주세요.','일정 및 제공 범위는 별도 확인이 필요합니다.'],event:['행사 일정과 장소는 별도 확인해 주세요.','참여 조건과 안내 사항을 확인해 주세요.','참여 전 자세한 정보를 확인해 주세요.'],info:['관련 안내 사항은 직접 확인해 주세요.','정확한 일정과 조건을 별도로 확인해 주세요.','확인한 정보를 바탕으로 안내를 마무리하세요.']}[kind]||[];
+    const ending=endings[v]||'상세 내용을 확인해 주세요.';
+    const intros={friendly:['📣 함께 알아볼 소식','✨ 간단히 소개해요','💡 관심 있다면 확인해 보세요'],informative:['📌 기본 정보','📋 안내 정보','🔎 확인한 정보'],short:['핵심 요약','한눈에 보기','짧은 안내']}[tone]||['📌 안내 정보','📋 정보','🔎 요약'];
+    const header=`${intros[v]} · ${label}: ${name}`;
+    const content=[header,`${itemLabel}: ${feature}`,targetText,priceText,ending].filter(Boolean).join('\n\n');
+    const blog=[`${label} 안내 — ${name}`,`아래는 입력된 정보만 바탕으로 정리한 초안입니다.`,`${itemLabel}: ${feature}`,targetText,priceText,ending].filter(Boolean).join('\n\n');
+    const shorts=[`[첫 화면] ${label}: ${name}`,`[주요 안내] ${feature}`,targetText?`[대상] ${target}`:'',`[가격·참여비] ${price===0?'0원 입력 · 무료 여부 확인':money(price)}`,`[마무리] ${ending}`].filter(Boolean).join('\n');
+    return {instagram:content,blog,shorts};
+  }
   const priceLine='표시 가격: '+money(price);
   const targetLine=target?`소개 대상: ${target}`:'';
   const instagramLines={
@@ -294,13 +488,18 @@ function buildDrafts(info,tone,version=0){
 }
 function renderDrafts(tone,mode,alternate=false){
   const input=getInput();
+  if(editedDraft && !confirm('직접 편집한 초안이 있어요. 새로 만들면 현재 수정 내용이 사라집니다. 계속할까요?'))return false;
   if(alternate)draftVersion=(draftVersion+1)%3;
   else draftVersion=0;
-  drafts=buildDrafts(input,tone,draftVersion);
+  drafts=addDisclosure(buildDrafts(input,tone,draftVersion));
+  editedDraft=false;
   for(const [key,text] of Object.entries(drafts)){outputs[key].value=text;}
   hasDraft=true;
   draftMode.textContent=mode;
-  setStatus(contentStatus,alternate?'✅ 새 표현으로 바꿨어요. 원하는 부분은 직접 수정해도 됩니다.':'✅ 초안 3개가 완성됐어요. 내용을 확인하고 필요하면 직접 수정하세요.');
+  const disclosure=byId('cDisclosure').value;
+  const note=disclosure==='review'?' ⚠️ 광고·협찬 여부를 확인한 후 게시하세요.':' 광고 표시가 필요한 경우 실제 관계와 플랫폼 규정을 다시 확인하세요.';
+  setStatus(contentStatus,(alternate?'✅ 새 표현으로 바꿨어요. 원하는 부분은 직접 수정해도 됩니다.':'✅ 초안 3개가 완성됐어요. 내용을 확인하고 필요하면 직접 수정하세요.')+note);
+  return true;
 }
 function currentDrafts(){
   if(!hasDraft)return null;
@@ -315,7 +514,7 @@ byId('regenerateContent').addEventListener('click',()=>{
   catch(error){setStatus(contentStatus,error.message,true);}
 });
 Object.values(outputs).forEach(el=>el.addEventListener('input',()=>{
-  if(hasDraft){draftMode.textContent='직접 수정한 초안';setStatus(contentStatus,'✍️ 편집한 내용은 복사·TXT 다운로드에 반영됩니다.');}
+  if(hasDraft){editedDraft=true;draftMode.textContent='직접 수정한 초안';setStatus(contentStatus,'✍️ 편집한 내용은 복사·TXT 다운로드에 반영됩니다.');}
 }));
 function allContent(){
   const d=currentDrafts();
@@ -331,7 +530,7 @@ window.addEventListener('autobiz65:loadDraft',event=>{
   const data=event.detail;
   if(!data?.body)return;
   for(const k of ['instagram','blog','shorts'])outputs[k].value=String(data.body[k]||'');
-  hasDraft=true;draftVersion=0;draftMode.textContent='보관함에서 불러온 초안';
+  hasDraft=true;editedDraft=false;draftVersion=0;draftMode.textContent='보관함에서 불러온 초안';
   setStatus(contentStatus,'✅ 보관함에서 글을 불러왔어요. 수정 후 다시 저장할 수 있습니다.');
 });
 byId('copyContent').addEventListener('click',()=>copyText(allContent()));
@@ -382,8 +581,8 @@ genBtn.addEventListener('click',async()=>{
     const tones={FRIENDLY:'friendly',INFORMATIVE:'informative',SHORT:'short'};
     const choice=tones[answer]||byId('cTone').value;
     byId('cTone').value=choice;
-    renderDrafts(choice,tones[answer]?'AI가 문체 선택 · 사실은 입력값 기반':'AI 문체 응답 불명확 · 선택한 문체 사용');
-    setStatus(aiStatus,tones[answer]?'✅ AI가 문체를 추천했습니다. 실제 초안은 입력한 사실만으로 작성했어요.':'⚠️ AI 응답이 정해진 문체 형식이 아니어서 선택한 문체로 초안을 만들었어요.');
+    const made=renderDrafts(choice,tones[answer]?'AI가 문체 선택 · 사실은 입력값 기반':'AI 문체 응답 불명확 · 선택한 문체 사용');
+    setStatus(aiStatus,made?(tones[answer]?'✅ AI가 문체를 추천했습니다. 실제 초안은 입력한 사실만으로 작성했어요.':'⚠️ AI 응답이 정해진 문체 형식이 아니어서 선택한 문체로 초안을 만들었어요.'):'수정한 글을 유지했습니다.');
   }catch(error){
     renderDrafts(byId('cTone').value,'AI 오류 · 템플릿 대체');
     setStatus(aiStatus,'AI 문체 추천 실패: '+String(error?.message||error)+'. 안전한 템플릿 초안으로 대체했어요.',true);
@@ -403,9 +602,9 @@ const time=()=>new Date().toISOString();
 function status(id,msg,error=false){$(id).textContent=msg;$(id).classList.toggle('err',error);}
 function validateProduct(p){
  if(!p||typeof p!=='object')throw Error('상품 형식이 올바르지 않습니다.');
- const name=clean(p.name),feature=clean(p.feature),target=clean(p.target),price=Number(p.price);
+ const name=clean(p.name),feature=clean(p.feature),target=clean(p.target),price=Number(p.price),kind=['product','service','event','info'].includes(p.kind)?p.kind:'product';
  if(!name||!feature||name.length>90||feature.length>600||target.length>90||!Number.isSafeInteger(price)||price<0||price>1e12)throw Error('상품 정보에 잘못된 값이 있습니다.');
- return {id:String(p.id||uid()).slice(0,90),name,feature,target,price,updated:String(p.updated||time()).slice(0,40)};
+ return {id:String(p.id||uid()).slice(0,90),name,feature,target,price,kind,updated:String(p.updated||time()).slice(0,40)};
 }
 function validateDraft(d){
  if(!d||typeof d!=='object'||!d.body||typeof d.body!=='object')throw Error('저장된 콘텐츠 형식이 잘못됐습니다.');
@@ -438,10 +637,10 @@ function setTab(tab){
 function readInput(){
  const name=clean($('cName').value),feature=clean($('cFeature').value),target=clean($('cTarget').value),raw=$('cPrice').value;
  if(!name||!feature||raw==='')throw Error('상품명, 특징, 가격을 입력하세요.');
- return validateProduct({id:editingProductId||uid(),name,feature,target,price:Number(raw),updated:time()});
+ return validateProduct({id:editingProductId||uid(),name,feature,target,price:Number(raw),kind:$('cKind').value,updated:time()});
 }
 function fillProduct(product){
- $('cName').value=product.name;$('cFeature').value=product.feature;$('cTarget').value=product.target;$('cPrice').value=String(product.price);
+ $('cKind').value=product.kind||'product';$('cName').value=product.name;$('cFeature').value=product.feature;$('cTarget').value=product.target;$('cPrice').value=String(product.price);
  editingProductId=product.id;
  $('savedProductSelect').value=product.id;
  $('selectedProductInfo').textContent='수정 중: '+product.name+' · 저장하면 기존 상품 정보를 업데이트합니다.';
@@ -449,7 +648,7 @@ function fillProduct(product){
 }
 function resetProduct(){
  editingProductId=null;
- $('cName').value='';$('cFeature').value='';$('cTarget').value='';$('cPrice').value='';
+ $('cKind').value='product';$('cName').value='';$('cFeature').value='';$('cTarget').value='';$('cPrice').value='';
  $('savedProductSelect').value='';$('selectedProductInfo').textContent='새 상품을 입력하고 ‘이 상품 저장’을 누르세요.';
  status('productStatus','새 상품을 입력할 수 있어요.');
  setTab('content');$('cName').focus();
@@ -569,7 +768,7 @@ render();
   const WORK_KEY='autobiz66_workspace_v1';
   const CHANGE_KEY='autobiz66_changed_at_v1';
   const BACKUP_KEY='autobiz66_backup_requested_at_v1';
-  const formIds=['cName','cFeature','cTarget','cPrice','cTone','draftInstagram','draftBlog','draftShorts'];
+  const formIds=['cKind','cName','cFeature','cTarget','cPrice','cTone','cDisclosure','draftInstagram','draftBlog','draftShorts'];
   const status=$('workStatus');
   let saveTimer=null;
   const format=t=>t?new Date(Number(t)).toLocaleString('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
@@ -615,7 +814,7 @@ render();
     }
   }catch(e){status.textContent='⚠️ 임시 작업을 읽지 못했습니다. 저장된 상품·콘텐츠 기록에는 영향이 없습니다.';}
   formIds.forEach(id=>$(id).addEventListener('input',scheduleWorkspace));
-  $('cTone').addEventListener('change',scheduleWorkspace);
+  $('cKind').addEventListener('change',scheduleWorkspace);$('cTone').addEventListener('change',scheduleWorkspace);$('cDisclosure').addEventListener('change',scheduleWorkspace);
   // Programmatic filling does not dispatch input events. Capture clicks once UI handlers finish.
   ['loadSelectedProduct','newProduct','generateContent','regenerateContent','saveProduct','archiveContent'].forEach(id=>{
     $(id).addEventListener('click',()=>queueMicrotask(scheduleWorkspace));
@@ -626,7 +825,7 @@ render();
     if(!confirm('현재 작성 중인 입력과 글 초안만 초기화할까요? 저장된 상품·보관함·판매 기록은 삭제되지 않습니다.'))return;
     clearTimeout(saveTimer);
     for(const id of formIds)$(id).value='';
-    $('cTone').value='friendly';
+    $('cTone').value='friendly';$('cDisclosure').value='review';$('cKind').value='product';
     try{localStorage.removeItem(WORK_KEY);}catch(e){}
     status.textContent='작업 중인 입력을 초기화했습니다. 저장된 자료는 그대로입니다.';
   });
@@ -637,6 +836,27 @@ render();
   });
   $('quickBackup').addEventListener('click',()=>{$('exportJson').click();});
   updateBanner();
+})();
+</script>
+<script>
+// Presentation-only enhancement: navigation from quick actions and readable breadcrumbs.
+(() => {
+  const labels={dashboard:'대시보드',sales:'매출 관리',content:'AI 콘텐츠 제작',library:'상품·글 보관함',analysis:'상품 분석',backup:'백업 및 복원'};
+  const crumb=document.getElementById('navBreadcrumb'), title=document.getElementById('navPageTitle');
+  const sync=()=>{
+    const current=document.querySelector('.tab.active');
+    if(!current)return;
+    const label=labels[current.dataset.tab]||'대시보드';
+    crumb.textContent=label;title.textContent=label;
+  };
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',sync));
+  document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{
+    const t=document.querySelector(`.tab[data-tab="${b.dataset.go}"]`);
+    if(!t)return;
+    t.click();
+    document.querySelector('.topbar')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+  sync();
 })();
 </script>
 </body>
